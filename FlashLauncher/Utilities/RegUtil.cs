@@ -6,7 +6,7 @@ namespace HabboLauncher
     {
         public static void RegisterProtocol(string path)
         {
-            var key = Registry.ClassesRoot.OpenSubKey("habbo");
+            var key = Registry.ClassesRoot.OpenSubKey("habbo", true);
             if (key == null)
             {
                 key = Registry.ClassesRoot.CreateSubKey("habbo");
@@ -22,7 +22,7 @@ namespace HabboLauncher
                 key.SetValue("URL Protocol", string.Empty);
             }
 
-            var subKey = key.OpenSubKey(@"shell\open\command");
+            var subKey = key.OpenSubKey(@"shell\open\command", true);
             if (subKey == null)
                 subKey = key.CreateSubKey(@"shell\open\command");
 

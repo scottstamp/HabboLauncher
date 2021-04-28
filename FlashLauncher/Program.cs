@@ -28,8 +28,8 @@ namespace HabboLauncher
 
         static void CreateOriginalDirectories()
         {
-            Directory.CreateDirectory(AppDir);
-            Directory.CreateDirectory(AppCacheDir);
+            if (!Directory.Exists(AppDir)) Directory.CreateDirectory(AppDir);
+            if (!Directory.Exists(AppCacheDir)) Directory.CreateDirectory(AppCacheDir);
         }
 
         static bool CheckExecutingDirectory()
