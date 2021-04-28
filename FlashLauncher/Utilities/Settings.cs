@@ -8,6 +8,7 @@ namespace HabboLauncher
         public string Lang { get; set; } = "en";
         public string LastLaunched { get; set; } = "air";
         public bool AutoLaunch { get; set; } = false;
+        public bool PromptSelfUpdate { get; set; } = true;
 
         public static Settings LoadSettings()
         {

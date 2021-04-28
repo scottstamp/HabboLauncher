@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HabboLauncher.Utilities;
+using System;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
@@ -10,11 +12,12 @@ namespace HabboLauncher
     {
         private readonly Regex tokenRe = new Regex(@"^([\w]+)\.([\w-]+\.V4)$");
         private string server = "", ticket = "";
+        private SelfUpdater SelfUpdater;
 
         public MainFrm(string[] args)
         {
             InitializeComponent();
-
+            
             if (args.Length == 1)
             {
                 var uriQuery = HttpUtility.ParseQueryString(new Uri(args[0]).Query);
@@ -33,6 +36,22 @@ namespace HabboLauncher
                 cp.ExStyle |= 8;  // Turn on WS_EX_TOPMOST
                 return cp;
             }
+        }
+
+        public void SetVersionText(string text)
+        {
+            Invoke((MethodInvoker)delegate
+            {
+                lblVersionLink.Text = $"v{text}";
+            });
+        }
+
+        public void DisableAutoLaunch()
+        {
+            chkAutoLaunch.Invoke((MethodInvoker)delegate
+            {
+                chkAutoLaunch.Checked = false;
+            });
         }
 
         private void HandleAutoLaunch()
@@ -137,8 +156,14 @@ namespace HabboLauncher
             Program.Settings.SaveSettings();
         }
 
+        private void lblVersionLink_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/scottstamp/HabboLauncher/releases/latest");
+        }
+
         private void MainFrm_Load(object sender, EventArgs e)
         {
+            SelfUpdater = new SelfUpdater(this);
             HandleAutoLaunch();
         }
     }

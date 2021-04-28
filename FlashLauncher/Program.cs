@@ -10,7 +10,7 @@ namespace HabboLauncher
     {
         public static readonly string AppDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "habbo-electron-launcher");
         public static readonly string AppCacheDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Habbo Launcher");
-        
+
         public static Updater Updater = new();
         public static Settings Settings = Settings.LoadSettings();
 
@@ -30,6 +30,9 @@ namespace HabboLauncher
         {
             if (!Directory.Exists(AppDir) || !Directory.Exists(AppCacheDir))
             {
+                Directory.CreateDirectory(AppDir);
+                Directory.CreateDirectory(AppCacheDir);
+
                 MessageBox.Show("Original Habbo Launcher installation directory was not found. Please reinstall the launcher from Habbo or our GitHub page." +
                     "\r\n\r\nhttps://github.com/scottstamp/HabboLauncher/releases/latest");
                 return false;

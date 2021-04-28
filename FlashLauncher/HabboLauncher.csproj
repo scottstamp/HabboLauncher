@@ -214,7 +214,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" />
     <Compile Include="Json\ClientUrls.cs" />
     <Compile Include="Json\Versions.cs" />
     <Compile Include="Utilities\Launcher.cs" />
@@ -232,6 +231,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\RegUtil.cs" />
+    <Compile Include="Utilities\SelfUpdater.cs" />
     <Compile Include="Utilities\Settings.cs" />
     <Compile Include="Utilities\Updater.cs" />
     <Compile Include="Utilities\UpdateResult.cs" />
@@ -245,7 +245,6 @@
     <Content Include="Images\air.png" />
     <Content Include="Images\unity.png" />
     <Content Include="Images\FlashLauncher.ico" />
-    <Content Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
