@@ -1,15 +1,13 @@
-name: CI
-
+name: Publish
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  release:
+    types: [published]
 
   workflow_dispatch:
 
 jobs:
-  build:
+  release:
+    name: Release
     runs-on: windows-latest
 
     steps:
@@ -30,7 +28,6 @@ jobs:
         
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: bin\Release\HabboLauncher.exe
         env:
