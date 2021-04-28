@@ -41,6 +41,7 @@ namespace HabboLauncher
             // 
             // btnLaunchFlash
             // 
+            this.btnLaunchFlash.Enabled = false;
             this.btnLaunchFlash.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchFlash.Image")));
             this.btnLaunchFlash.Location = new System.Drawing.Point(20, 38);
             this.btnLaunchFlash.Name = "btnLaunchFlash";
@@ -52,6 +53,7 @@ namespace HabboLauncher
             // 
             // btnLaunchUnity
             // 
+            this.btnLaunchUnity.Enabled = false;
             this.btnLaunchUnity.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchUnity.Image")));
             this.btnLaunchUnity.Location = new System.Drawing.Point(136, 38);
             this.btnLaunchUnity.Name = "btnLaunchUnity";

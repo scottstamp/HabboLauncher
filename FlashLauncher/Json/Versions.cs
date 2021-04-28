@@ -8,7 +8,7 @@ namespace HabboLauncher.Json
     public class Versions
     {
         public List<Installation> Installations { get; set; } = new List<Installation>();
-        public LastCheck LastCheck { get; set; }
+        public LastCheck LastCheck { get; set; } = new LastCheck();
     }
 
     public class Installation

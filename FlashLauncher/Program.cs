@@ -10,13 +10,16 @@ namespace HabboLauncher
         public static readonly string AppDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "habbo-electron-launcher");
         public static readonly string AppCacheDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Habbo Launcher");
 
-        public static Updater Updater = new();
-        public static Settings Settings = Settings.LoadSettings();
+        public static Updater Updater;
+        public static Settings Settings;
 
         [STAThread]
         static void Main(string[] args)
         {
             CreateOriginalDirectories();
+            
+            Updater = new();
+            Settings = Settings.LoadSettings();
 
             if (!CheckExecutingDirectory()) return;
             ShowUpdatePrompt(Updater.CheckForUpdate());
@@ -43,10 +46,13 @@ namespace HabboLauncher
                 var result = MessageBox.Show($"HabboLauncher was executed outside of \"{AppDir}\", copy to this folder?", "HabboLauncher ~ Info", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    if (!File.Exists(Path.Combine(AppDir, "Habbo Launcher.exe.old")))
-                        File.Move(Path.Combine(AppDir, "Habbo Launcher.exe"), Path.Combine(AppDir, "Habbo Launcher.exe.old"));
+                    var currentPath = Process.GetCurrentProcess().MainModule.FileName;
+                    var installPath = Path.Combine(AppDir, "Habbo Launcher.exe");
 
-                    File.Copy(Process.GetCurrentProcess().MainModule.FileName, Path.Combine(AppDir, "Habbo Launcher.exe"), true);
+                    if (!File.Exists(Path.Combine(AppDir, "Habbo Launcher.exe.old")) && File.Exists(installPath))
+                        File.Move(Path.Combine(AppDir, "Habbo Launcher.exe"), Path.Combine(AppDir, "Habbo Launcher.exe.old"));
+                    
+                    File.Copy(currentPath, installPath, File.Exists(installPath));
 
                     RegUtil.RegisterProtocol(Path.Combine(AppDir, "Habbo Launcher.exe"));
                     MessageBox.Show("Copied successfully. You may now launch Habbo from the website as normal.", "HabboLauncher ~ Info", MessageBoxButtons.OK);
