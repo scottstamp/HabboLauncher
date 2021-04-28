@@ -17,7 +17,8 @@ namespace HabboLauncher
         [STAThread]
         static void Main(string[] args)
         {
-            if (!CheckOriginalDirectories()) return;
+            CreateOriginalDirectories();
+
             if (!CheckExecutingDirectory()) return;
             ShowUpdatePrompt(Updater.CheckForUpdate());
             
@@ -26,19 +27,10 @@ namespace HabboLauncher
             Application.Run(new MainFrm(args));
         }
 
-        static bool CheckOriginalDirectories()
+        static void CreateOriginalDirectories()
         {
-            if (!Directory.Exists(AppDir) || !Directory.Exists(AppCacheDir))
-            {
-                Directory.CreateDirectory(AppDir);
-                Directory.CreateDirectory(AppCacheDir);
-
-                MessageBox.Show("Original Habbo Launcher installation directory was not found. Please reinstall the launcher from Habbo or our GitHub page." +
-                    "\r\n\r\nhttps://github.com/scottstamp/HabboLauncher/releases/latest");
-                return false;
-            }
-
-            return true;
+            Directory.CreateDirectory(AppDir);
+            Directory.CreateDirectory(AppCacheDir);
         }
 
         static bool CheckExecutingDirectory()
@@ -56,7 +48,8 @@ namespace HabboLauncher
                         File.Move(Path.Combine(AppDir, "Habbo Launcher.exe"), Path.Combine(AppDir, "Habbo Launcher.exe.old"));
 
                     File.Copy(Process.GetCurrentProcess().MainModule.FileName, Path.Combine(AppDir, "Habbo Launcher.exe"), true);
-                    MessageBox.Show("Copied successfully.", "HabboLauncher ~ Info", MessageBoxButtons.YesNo);
+                    
+                    MessageBox.Show("Copied successfully. You may now launch Habbo from the website as normal.", "HabboLauncher ~ Info", MessageBoxButtons.OK);
                     return false;
                 }
             }
