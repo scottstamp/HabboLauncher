@@ -23,7 +23,7 @@ namespace HabboLauncher.Utilities
             MainFrm = mainFrm;
 
             LocalVersion = new Version(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion);
-            MainFrm.SetVersionText(LocalVersion.ToString());
+            MainFrm.SetVersionText(LocalVersion.ToString(3));
 
             var git = new GitHubClient(new ProductHeaderValue("HabboLauncher"));
             git.Repository.Release.GetAll("scottstamp", "HabboLauncher").ContinueWith(GrabbedReleases);
