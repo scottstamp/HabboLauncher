@@ -39,7 +39,7 @@ namespace HabboLauncher.Utilities
             foreach (Release release in releases)
             {
                 string version = release.TagName.Substring(1);
-                if (version == LocalVersion.ToString())
+                if (version == LocalVersion.ToString(3))
                 {
                     Current = release;
                     break;
