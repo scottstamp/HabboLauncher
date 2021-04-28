@@ -13,11 +13,13 @@ namespace HabboLauncher
         private readonly Regex tokenRe = new Regex(@"^([\w]+)\.([\w-]+\.V4)$");
         private string server = "", ticket = "";
         private SelfUpdater SelfUpdater;
+        private bool closing = false;
 
         public MainFrm(string[] args)
         {
             InitializeComponent();
-            
+            FormClosing += (s, e) => closing = true;
+
             if (args.Length == 1)
             {
                 var uriQuery = HttpUtility.ParseQueryString(new Uri(args[0]).Query);
@@ -67,7 +69,7 @@ namespace HabboLauncher
                     {
                         for (var i = 5; i >= 0; i--)
                         {
-                            if (!chkAutoLaunch.Checked) return;
+                            if (!chkAutoLaunch.Checked || closing) return;
                             if (i == 0 && chkAutoLaunch.Checked && btnLaunchUnity.Enabled)
                             {
                                 btnLaunchUnity_Click(null, null);
@@ -92,7 +94,7 @@ namespace HabboLauncher
                     {
                         for (var i = 5; i >= 0; i--)
                         {
-                            if (!chkAutoLaunch.Checked) return;
+                            if (!chkAutoLaunch.Checked || closing) return;
                             if (i == 0 && btnLaunchFlash.Enabled)
                             {
                                 btnLaunchFlash_Click(null, null);
