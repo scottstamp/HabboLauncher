@@ -47,7 +47,8 @@ namespace HabboLauncher
                         File.Move(Path.Combine(AppDir, "Habbo Launcher.exe"), Path.Combine(AppDir, "Habbo Launcher.exe.old"));
 
                     File.Copy(Process.GetCurrentProcess().MainModule.FileName, Path.Combine(AppDir, "Habbo Launcher.exe"), true);
-                    
+
+                    RegUtil.RegisterProtocol(Path.Combine(AppDir, "Habbo Launcher.exe"));
                     MessageBox.Show("Copied successfully. You may now launch Habbo from the website as normal.", "HabboLauncher ~ Info", MessageBoxButtons.OK);
                     return false;
                 }
