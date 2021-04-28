@@ -29,6 +29,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: bin\Release\HabboLauncher.exe
+          files: FlashLauncher\bin\Release\HabboLauncher.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
