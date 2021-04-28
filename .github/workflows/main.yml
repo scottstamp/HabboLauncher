@@ -32,5 +32,3 @@ jobs:
           files: bin\Release\HabboLauncher.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  release:
-    runs-on: windows-latest
