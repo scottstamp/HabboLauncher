@@ -34,9 +34,9 @@ namespace HabboLauncher
             this.btnLaunchUnity = new System.Windows.Forms.Button();
             this.chkAutoLaunch = new System.Windows.Forms.CheckBox();
             this.txtCode = new System.Windows.Forms.TextBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ssInfo = new System.Windows.Forms.StatusStrip();
             this.lblVersionLink = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusStrip1.SuspendLayout();
+            this.ssInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLaunchFlash
@@ -79,15 +79,14 @@ namespace HabboLauncher
             this.txtCode.TabIndex = 3;
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
-            // statusStrip1
+            // ssInfo
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ssInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblVersionLink});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 143);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(256, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
+            this.ssInfo.Location = new System.Drawing.Point(0, 143);
+            this.ssInfo.Name = "ssInfo";
+            this.ssInfo.Size = new System.Drawing.Size(256, 22);
+            this.ssInfo.TabIndex = 4;
             // 
             // lblVersionLink
             // 
@@ -95,7 +94,7 @@ namespace HabboLauncher
             this.lblVersionLink.IsLink = true;
             this.lblVersionLink.Name = "lblVersionLink";
             this.lblVersionLink.Size = new System.Drawing.Size(37, 17);
-            this.lblVersionLink.Text = "v1.0.0";
+            this.lblVersionLink.Text = "v0.0.0";
             this.lblVersionLink.Click += new System.EventHandler(this.lblVersionLink_Click);
             // 
             // MainFrm
@@ -104,7 +103,7 @@ namespace HabboLauncher
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(256, 165);
             this.Controls.Add(this.chkAutoLaunch);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.ssInfo);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.btnLaunchUnity);
             this.Controls.Add(this.btnLaunchFlash);
@@ -114,8 +113,8 @@ namespace HabboLauncher
             this.Name = "MainFrm";
             this.Text = "Habbo Launcher";
             this.Load += new System.EventHandler(this.MainFrm_Load);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.ssInfo.ResumeLayout(false);
+            this.ssInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,7 +126,7 @@ namespace HabboLauncher
         private System.Windows.Forms.Button btnLaunchUnity;
         private System.Windows.Forms.CheckBox chkAutoLaunch;
         private System.Windows.Forms.TextBox txtCode;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip ssInfo;
         private System.Windows.Forms.ToolStripStatusLabel lblVersionLink;
     }
 }
