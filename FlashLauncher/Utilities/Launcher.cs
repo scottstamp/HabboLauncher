@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace HabboLauncher
@@ -26,9 +27,20 @@ namespace HabboLauncher
             doc.Save(appXmlPath);
         }
 
-        public static void LaunchFlashClient(string server, string ticket)
+        public static void LaunchFlashClient(string server, string ticket, bool withGEarth = true)
         {
             SetFlashApplicationId(ticket);
+
+            if (withGEarth)
+            {
+                Process.Start(new ProcessStartInfo("G-Earth.exe")
+                {
+                    WorkingDirectory = Program.Settings.GEarthPath,
+                    Arguments = "-c flash"
+                });
+
+                Task.Delay(2000).Wait();
+            }
 
             Process.Start(new ProcessStartInfo("Habbo.exe")
             {

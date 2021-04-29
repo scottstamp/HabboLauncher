@@ -6,8 +6,14 @@ namespace HabboLauncher
     public class Settings
     {
         public string Lang { get; set; } = "en";
+
+        public bool LaunchGEarth { get; set; } = false;
+        public string GEarthPath { get; set; } = @"C:\Users\scott\Downloads\G-Earth-1.4.1-Windows_64bit";
+
         public string LastLaunched { get; set; } = "air";
         public bool AutoLaunch { get; set; } = false;
+        public int AutoLaunchDelay { get; set; } = 5;
+
         public bool PromptSelfUpdate { get; set; } = true;
 
         public static Settings LoadSettings()

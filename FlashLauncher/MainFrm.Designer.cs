@@ -36,6 +36,7 @@ namespace HabboLauncher
             this.txtCode = new System.Windows.Forms.TextBox();
             this.ssInfo = new System.Windows.Forms.StatusStrip();
             this.lblVersionLink = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnOptions = new System.Windows.Forms.Button();
             this.ssInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@ namespace HabboLauncher
             // chkAutoLaunch
             // 
             this.chkAutoLaunch.AutoSize = true;
-            this.chkAutoLaunch.Location = new System.Drawing.Point(82, 148);
+            this.chkAutoLaunch.Location = new System.Drawing.Point(12, 144);
             this.chkAutoLaunch.Name = "chkAutoLaunch";
             this.chkAutoLaunch.Size = new System.Drawing.Size(92, 17);
             this.chkAutoLaunch.TabIndex = 2;
@@ -85,7 +86,7 @@ namespace HabboLauncher
             // 
             this.ssInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblVersionLink});
-            this.ssInfo.Location = new System.Drawing.Point(0, 143);
+            this.ssInfo.Location = new System.Drawing.Point(0, 166);
             this.ssInfo.Name = "ssInfo";
             this.ssInfo.Size = new System.Drawing.Size(256, 22);
             this.ssInfo.TabIndex = 4;
@@ -99,11 +100,22 @@ namespace HabboLauncher
             this.lblVersionLink.Text = "v0.0.0";
             this.lblVersionLink.Click += new System.EventHandler(this.lblVersionLink_Click);
             // 
+            // btnOptions
+            // 
+            this.btnOptions.Location = new System.Drawing.Point(161, 167);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(75, 21);
+            this.btnOptions.TabIndex = 5;
+            this.btnOptions.Text = "Options";
+            this.btnOptions.UseVisualStyleBackColor = true;
+            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 165);
+            this.ClientSize = new System.Drawing.Size(256, 188);
+            this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.chkAutoLaunch);
             this.Controls.Add(this.ssInfo);
             this.Controls.Add(this.txtCode);
@@ -130,5 +142,6 @@ namespace HabboLauncher
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.StatusStrip ssInfo;
         private System.Windows.Forms.ToolStripStatusLabel lblVersionLink;
+        private System.Windows.Forms.Button btnOptions;
     }
 }

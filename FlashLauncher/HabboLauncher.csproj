@@ -214,6 +214,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOptions.Designer.cs">
+      <DependentUpon>FrmOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Json\ClientUrls.cs" />
     <Compile Include="Json\Versions.cs" />
     <Compile Include="Utilities\Launcher.cs" />
@@ -259,6 +265,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmOptions.resx">
+      <DependentUpon>FrmOptions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>

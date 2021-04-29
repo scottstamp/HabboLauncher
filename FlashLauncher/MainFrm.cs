@@ -63,11 +63,11 @@ namespace HabboLauncher
                 chkAutoLaunch.Checked = true;
                 if (Program.Settings.LastLaunched == "unity")
                 {
-                    chkAutoLaunch.Text = "Auto: Unity (5s)";
+                    chkAutoLaunch.Text = $"Auto: Unity ({Program.Settings.AutoLaunchDelay}s)";
 
                     Task.Run(() =>
                     {
-                        for (var i = 5; i >= 0; i--)
+                        for (var i = Program.Settings.AutoLaunchDelay; i >= 0; i--)
                         {
                             if (!chkAutoLaunch.Checked || closing) return;
                             if (i == 0 && chkAutoLaunch.Checked && btnLaunchUnity.Enabled)
@@ -88,11 +88,11 @@ namespace HabboLauncher
                 }
                 else
                 {
-                    chkAutoLaunch.Text = "Auto: AIR (5s)";
+                    chkAutoLaunch.Text = $"Auto: AIR ({Program.Settings.AutoLaunchDelay}s)";
 
                     Task.Run(() =>
                     {
-                        for (var i = 5; i >= 0; i--)
+                        for (var i = Program.Settings.AutoLaunchDelay; i >= 0; i--)
                         {
                             if (!chkAutoLaunch.Checked || closing) return;
                             if (i == 0 && btnLaunchFlash.Enabled)
@@ -118,11 +118,15 @@ namespace HabboLauncher
         {
             Program.Settings.LastLaunched = "air";
             Program.Settings.SaveSettings();
-            Launcher.LaunchFlashClient(server, ticket);
 
-            Invoke((MethodInvoker)delegate
+            Task.Run(() =>
             {
-                Close();
+                Launcher.LaunchFlashClient(server, ticket, Program.Settings.LaunchGEarth);
+
+                Invoke((MethodInvoker)delegate
+                {
+                    Close();
+                });
             });
         }
 
@@ -161,6 +165,13 @@ namespace HabboLauncher
         private void lblVersionLink_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/scottstamp/HabboLauncher/releases/latest");
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            DisableAutoLaunch();
+            var frmOptions = new FrmOptions();
+            frmOptions.ShowDialog();
         }
 
         private void MainFrm_Load(object sender, EventArgs e)
