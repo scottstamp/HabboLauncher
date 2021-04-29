@@ -6,6 +6,7 @@ Feel free to clone or modify this project for your own personal uses, I just ask
 # Features
 - Multi-login (allows loading multiple accounts / hotels at once)
 - Auto-launch (will automatically launch the last client you selected after 5 seconds)
+- G-Earth integration (set your G-Earth path in the Options dialog to connect automatically)
 - Updater (checks with Habbo every time you run the launcher for any new client files)
 
 # Motivation
