@@ -36,7 +36,8 @@ namespace HabboLauncher
             this.btnGEarthBrowse = new System.Windows.Forms.Button();
             this.chkLaunchGEarth = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.fbd = new System.Windows.Forms.FolderBrowserDialog();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
+            this.chkIgnoreClientUpdates = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numAutoLaunchDelay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,11 +55,6 @@ namespace HabboLauncher
             this.numAutoLaunchDelay.Location = new System.Drawing.Point(115, 12);
             this.numAutoLaunchDelay.Maximum = new decimal(new int[] {
             10,
-            0,
-            0,
-            0});
-            this.numAutoLaunchDelay.Minimum = new decimal(new int[] {
-            3,
             0,
             0,
             0});
@@ -110,7 +106,7 @@ namespace HabboLauncher
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(130, 123);
+            this.btnSave.Location = new System.Drawing.Point(130, 141);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
@@ -118,11 +114,27 @@ namespace HabboLauncher
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // ofd
+            // 
+            this.ofd.Filter = "G-Earth Executable|G-Earth.exe";
+            // 
+            // chkIgnoreClientUpdates
+            // 
+            this.chkIgnoreClientUpdates.AutoSize = true;
+            this.chkIgnoreClientUpdates.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkIgnoreClientUpdates.Location = new System.Drawing.Point(12, 118);
+            this.chkIgnoreClientUpdates.Name = "chkIgnoreClientUpdates";
+            this.chkIgnoreClientUpdates.Size = new System.Drawing.Size(131, 17);
+            this.chkIgnoreClientUpdates.TabIndex = 6;
+            this.chkIgnoreClientUpdates.Text = "Ignore Client Updates:";
+            this.chkIgnoreClientUpdates.UseVisualStyleBackColor = true;
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(217, 153);
+            this.ClientSize = new System.Drawing.Size(217, 172);
+            this.Controls.Add(this.chkIgnoreClientUpdates);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.chkLaunchGEarth);
             this.Controls.Add(this.btnGEarthBrowse);
@@ -148,6 +160,7 @@ namespace HabboLauncher
         private System.Windows.Forms.Button btnGEarthBrowse;
         private System.Windows.Forms.CheckBox chkLaunchGEarth;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.FolderBrowserDialog fbd;
+        private System.Windows.Forms.OpenFileDialog ofd;
+        private System.Windows.Forms.CheckBox chkIgnoreClientUpdates;
     }
 }

@@ -31,15 +31,15 @@ namespace HabboLauncher
         {
             SetFlashApplicationId(ticket);
 
-            if (withGEarth)
+            if (withGEarth && File.Exists(Program.Settings.GEarthPath))
             {
-                Process.Start(new ProcessStartInfo("G-Earth.exe")
+                Process.Start(new ProcessStartInfo(Path.GetFileName(Program.Settings.GEarthPath))
                 {
-                    WorkingDirectory = Program.Settings.GEarthPath,
+                    WorkingDirectory = Path.GetDirectoryName(Program.Settings.GEarthPath),
                     Arguments = "-c flash"
                 });
 
-                Task.Delay(2000).Wait();
+                Task.Delay(1000).Wait();
             }
 
             Process.Start(new ProcessStartInfo("Habbo.exe")

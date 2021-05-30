@@ -7,8 +7,11 @@ namespace HabboLauncher
 {
     class Program
     {
-        public static readonly string AppDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "habbo-electron-launcher");
-        public static readonly string AppCacheDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Habbo Launcher");
+        //public static readonly string AppDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "habbo-electron-launcher");
+        //public static readonly string AppCacheDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Habbo Launcher");
+
+        public static readonly string AppDir = Path.Combine("D:\\", "Programs", "habbo-electron-launcher");
+        public static readonly string AppCacheDir = Path.Combine("D:\\", "Programs", "habbo-electron-launcher", "Habbo Launcher");
 
         public static Updater Updater;
         public static Settings Settings;
@@ -65,6 +68,8 @@ namespace HabboLauncher
 
         static void ShowUpdatePrompt(UpdateResult result)
         {
+            if (Settings.IgnoreClientUpdates && !result.Required) return;
+
             if (result.FlashUpdate && result.UnityUpdate)
             {
                 var message = "Updates for the both client versions are available. Would you like to download them?";

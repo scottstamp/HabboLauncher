@@ -10,6 +10,8 @@ namespace HabboLauncher
         public bool LaunchGEarth { get; set; } = false;
         public string GEarthPath { get; set; } = @"C:\Users\scott\Downloads\G-Earth-1.4.1-Windows_64bit";
 
+        public bool IgnoreClientUpdates { get; set; } = false;
+
         public string LastLaunched { get; set; } = "air";
         public bool AutoLaunch { get; set; } = false;
         public int AutoLaunchDelay { get; set; } = 5;
