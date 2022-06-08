@@ -32,19 +32,23 @@ namespace HabboLauncher
 
         public UpdateResult CheckForUpdate()
         {
-            var data = webClient.DownloadString("https://www.habbo.com/gamedata/clienturls");
-            lastCheckData = JsonConvert.DeserializeObject<ClientUrls>(data);
+            try {
+                var data = webClient.DownloadString("https://www.habbo.com/gamedata/clienturls");
+                lastCheckData = JsonConvert.DeserializeObject<ClientUrls>(data);
 
-            if (FlashInstall == null || UnityInstall == null)
-                return new UpdateResult(FlashInstall == null, UnityInstall == null, true);
+                if (FlashInstall == null || UnityInstall == null)
+                    return new UpdateResult(FlashInstall == null, UnityInstall == null, true);
 
-            if (!Directory.Exists(FlashInstall.Path) || !Directory.Exists(UnityInstall.Path))
-            {
-                return new UpdateResult(!Directory.Exists(FlashInstall.Path), !Directory.Exists(UnityInstall.Path), true);
+                if (!Directory.Exists(FlashInstall.Path) || !Directory.Exists(UnityInstall.Path))
+                {
+                    return new UpdateResult(!Directory.Exists(FlashInstall.Path), !Directory.Exists(UnityInstall.Path), true);
+                }
+
+                return new UpdateResult(lastCheckData.FlashWindowsVersion != versionCache.LastCheck.Air.Version,
+                    lastCheckData.UnityWindowsVersion != versionCache.LastCheck.Unity.Version);
+            } catch (Exception ex) {
+                return new UpdateResult(false, false);
             }
-
-            return new UpdateResult(lastCheckData.FlashWindowsVersion != versionCache.LastCheck.Air.Version,
-                lastCheckData.UnityWindowsVersion != versionCache.LastCheck.Unity.Version);
         }
 
         public void DownloadAirClient()

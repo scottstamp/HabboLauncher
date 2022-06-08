@@ -25,7 +25,8 @@ namespace HabboLauncher
             Settings = Settings.LoadSettings();
 
             if (!CheckExecutingDirectory()) return;
-            ShowUpdatePrompt(Updater.CheckForUpdate());
+            if (!Settings.IgnoreClientUpdates)
+                ShowUpdatePrompt(Updater.CheckForUpdate());
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
