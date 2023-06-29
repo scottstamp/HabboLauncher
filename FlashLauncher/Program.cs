@@ -115,6 +115,20 @@ namespace HabboLauncher
                     Updater.DownloadUnityClient();
                 }
             }
+            else if (result.HabboxUpdate)
+            {
+                var message = "An update for the Habbo X (Modern) client is available. Would you like to download it?";
+
+                if (result.Required)
+                    message = "Existing client files were not found, please click yes to download client files and continue.";
+
+                if (MessageBox.Show(message +
+                    $"\r\n\r\nHabbox: {Updater.LastCheckHabboxUrl}",
+                    "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Updater.DownloadHabboxClient();
+                }
+            }
         }
     }
 }

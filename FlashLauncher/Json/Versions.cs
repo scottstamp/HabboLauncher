@@ -21,6 +21,7 @@ namespace HabboLauncher.Json
 
     public class LastCheck
     {
+        public CheckInfo Habbox { get; set; }
         public CheckInfo Unity { get; set; }
         public CheckInfo Air { get; set; }
         public long Time { get; set; }

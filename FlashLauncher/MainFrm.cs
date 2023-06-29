@@ -86,7 +86,7 @@ namespace HabboLauncher
                         }
                     });
                 }
-                else
+                else if (Program.Settings.LastLaunched == "air")
                 {
                     chkAutoLaunch.Text = $"Auto: AIR ({Program.Settings.AutoLaunchDelay}s)";
 
@@ -104,6 +104,31 @@ namespace HabboLauncher
                                 Invoke((MethodInvoker)delegate
                                 {
                                     chkAutoLaunch.Text = $"Auto: AIR ({i}s)";
+                                });
+
+                                Task.Delay(1000).Wait();
+                            }
+                        }
+                    });
+                }
+                else if (Program.Settings.LastLaunched == "habbox")
+                {
+                    chkAutoLaunch.Text = $"Auto: Habbox ({Program.Settings.AutoLaunchDelay}s)";
+
+                    Task.Run(() =>
+                    {
+                        for (var i = Program.Settings.AutoLaunchDelay; i >= 0; i--)
+                        {
+                            if (!chkAutoLaunch.Checked || closing) return;
+                            if (i == 0 && btnLaunchFlash.Enabled)
+                            {
+                                btnLaunchHabbox_Click(null, null);
+                            }
+                            else
+                            {
+                                Invoke((MethodInvoker)delegate
+                                {
+                                    chkAutoLaunch.Text = $"Auto: Habbox ({i}s)";
                                 });
 
                                 Task.Delay(1000).Wait();
@@ -145,13 +170,30 @@ namespace HabboLauncher
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
             var m = tokenRe.Match(txtCode.Text);
-            btnLaunchFlash.Enabled = m.Success;
-            btnLaunchUnity.Enabled = m.Success;
 
             if (m.Success)
             {
                 server = m.Groups[1].Value;
                 ticket = m.Groups[2].Value;
+
+                if (server != null && (server == "hhxd" || server == "hhxp"))
+                {
+                    btnLaunchFlash.Enabled = false;
+                    btnLaunchUnity.Enabled = false;
+                    btnLaunchHabbox.Enabled = true;
+                }
+                else
+                {
+                    btnLaunchFlash.Enabled = true;
+                    btnLaunchUnity.Enabled = true;
+                    btnLaunchHabbox.Enabled = false;
+                }
+            }
+            else
+            {
+                btnLaunchFlash.Enabled = false;
+                btnLaunchUnity.Enabled = false;
+                btnLaunchHabbox.Enabled = false;
             }
         }
 
@@ -174,9 +216,35 @@ namespace HabboLauncher
             frmOptions.ShowDialog();
         }
 
+        private void btnLaunchHabbox_Click(object sender, EventArgs e)
+        {
+            Program.Settings.LastLaunched = "habbox";
+            Program.Settings.SaveSettings();
+            Launcher.LaunchHabboxClient(server, ticket);
+
+            Invoke((MethodInvoker)delegate
+            {
+                Close();
+            });
+        }
+
+        private void tssOptions_Click(object sender, EventArgs e)
+        {
+            DisableAutoLaunch();
+            var frmOptions = new FrmOptions();
+            frmOptions.ShowDialog();
+        }
+
+        private void chkLaunchGearth_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.Settings.LaunchGEarth = chkLaunchGearth.Checked;
+            Program.Settings.SaveSettings();
+        }
+
         private void MainFrm_Load(object sender, EventArgs e)
         {
             SelfUpdater = new SelfUpdater(this);
+            chkLaunchGearth.Checked = Program.Settings.LaunchGEarth;
             HandleAutoLaunch();
         }
     }

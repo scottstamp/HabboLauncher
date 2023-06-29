@@ -58,5 +58,14 @@ namespace HabboLauncher
             });
         }
 
+        public static void LaunchHabboxClient(string server, string ticket)
+        {
+            Process.Start(new ProcessStartInfo("habbo2020-global-prod.exe")
+            {
+                WorkingDirectory = Path.Combine(Program.Updater.HabboxInstall.Path, "StandaloneWindows"),
+                Arguments = $"-server {server} -ticket \"{ticket}\""
+            });
+        }
+
     }
 }

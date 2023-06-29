@@ -117,17 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ssInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnLaunchFlash.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnLaunchHabbox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAZdJREFUaEPt
-        mFFOwzAQRHtL7swlOEqZdZgSxc8lkJFqJI/0qqax387+9rYyUe4zodQHMkoneTXH4maU7dLH30k6Hq7/
-        uMD97dvVnv/jAs+WGGU7CNKzpBxeYLTEKNshkJ4l5dgvQEuMsh0A6VlSjuMCxyUEZrsM0rOkHLRAYb/A
-        RIYnHFS+sF9gIsMTDipf2C8wkeEJB5Uv7BeYy8MTtA5QvnBHgVkLJGgdoHzhjgKzFkjQOkD5wh0FZi2Q
-        oHWA8oU7Csx2+f21tA5QvnBHgVkLJGgdoHzhjgKzFkjQOkD5wh0F5vICKQeVL+wXmMjwhIPKF/YLTGR4
-        wkHlC/sFJjI84aDyhf0CExmecFD5wn6BiQxPOKh8Yb/ARIYnHFS+sF9gIsMTDipf2C8wkeEJB5Uv7BeY
-        yPCEg8oX9gvM/sBLofLF7gzmR8EZrjqe3fc70efrX9/HIRKc5apjdN+/iz67/94fB4+C33DVQff9m+jj
-        BWZews+iz36BWZfwd9HnuMCMS+zoQwsU9WpC+lB5U68nY2Ulk9vtE31uktCe11+fAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAADgAAAA1CAYAAAAUGCjAAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wQAADsEBuJFr7QAAAkVJREFUaEPtltFtwzAMRD1Ct+ka/ekaRffpsKlo6AyKPZNULLlxkAc8KLJIifeX
+        pXJ7Einr4dVBDglkqSXXR7JUG+rx7fa+fF1WIHmqG/XoeQJ+/mxBV+rRcwXUIevRK+BqBOuJjGA9VvAK
+        GBnBeiIjWI8VvAJGRrCeyAjWYwUPFzAD67OC6QEF1sfMwnqt4JSAAuvV9sD6reC0gALrF3tg/UxwOKDY
+        w8heTzAkoNjDkZ6sYFhAcRbsrUjgBnxbPrrNkq2192cFwwOKGTJ19t4ewZSAYkS25l7BlIB7sFq4B6vN
+        CIYH9MC5XrN9vYKhASNYD4xgPZ5gWEAPVr+nB6vfEwwJeCbsfSY4HNCD1Wf1YPVWMDWgoOvYyoxgPVZw
+        WsAeI1iPFZwWEL/tyoxgPVZwWsAeI1iPFUwLyGp73YPVWsG0gDNhc1jB8ICs5qgWVqPVuAEBuwQy8N1b
+        szJYHbSwgEI9bslcKLC6e2Vk6iSD+F2isIDC+oHhXSzgu7dmZXjnmFuUcJAFFLZiRmaAozLYdz2rDqat
+        53/Qh/U6HwzgrVkjMBfm3FPVUf4UerBB73UPzKFnY+q6oktzGfYMOyBbs1rwrp6FqeuKXTSXY89gA2e1
+        4B39NlPXFQ/RPIY9ww6u91YL7tVvMXVdcSjN49gzWCBowT36bqauK06lGQZ7xtWCWZrhsI9Ane5l6rri
+        v9IMi70F33UtU9cVH4pmeOy1OojV1D40TRj8AdZhtKivXootKAuJ8+qlWUMgJPbVp+LEYMvyC4cG9I5H
+        jOkQAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="btnLaunchUnity.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -142,9 +149,18 @@
         fUQnL/cOzgfzobzczXDr4PpwBlLqorlzEIPTI+pgvOv0B9i2F4nBLzfXWkG0AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="ssInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="btnLaunchFlash.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAZdJREFUaEPt
+        mFFOwzAQRHtL7swlOEqZdZgSxc8lkJFqJI/0qqax387+9rYyUe4zodQHMkoneTXH4maU7dLH30k6Hq7/
+        uMD97dvVnv/jAs+WGGU7CNKzpBxeYLTEKNshkJ4l5dgvQEuMsh0A6VlSjuMCxyUEZrsM0rOkHLRAYb/A
+        RIYnHFS+sF9gIsMTDipf2C8wkeEJB5Uv7BeYy8MTtA5QvnBHgVkLJGgdoHzhjgKzFkjQOkD5wh0FZi2Q
+        oHWA8oU7Csx2+f21tA5QvnBHgVkLJGgdoHzhjgKzFkjQOkD5wh0F5vICKQeVL+wXmMjwhIPKF/YLTGR4
+        wkHlC/sFJjI84aDyhf0CExmecFD5wn6BiQxPOKh8Yb/ARIYnHFS+sF9gIsMTDipf2C8wkeEJB5Uv7BeY
+        yPCEg8oX9gvM/sBLofLF7gzmR8EZrjqe3fc70efrX9/HIRKc5apjdN+/iz67/94fB4+C33DVQff9m+jj
+        BWZews+iz36BWZfwd9HnuMCMS+zoQwsU9WpC+lB5U68nY2Ulk9vtE31uktCe11+fAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAQAQEAAAAEAIAAoQgAARgAAADAwAAABACAAqCUAAG5CAAAgIAAAAQAgAKgQAAAWaAAAEBAAAAEA
