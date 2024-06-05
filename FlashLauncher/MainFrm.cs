@@ -10,7 +10,7 @@ namespace HabboLauncher
 {
     public partial class MainFrm : Form
     {
-        private readonly Regex tokenRe = new Regex(@"^([\w]+)\.([\w-]+\.V4)$");
+        private readonly Regex tokenRe = new Regex(@"^([\w]+)\.([\w-]+\.V4)");
         private string server = "", ticket = "";
         private SelfUpdater SelfUpdater;
         private bool closing = false;
