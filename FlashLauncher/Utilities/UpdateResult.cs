@@ -8,14 +8,15 @@ namespace HabboLauncher
 {
     public class UpdateResult
     {
-        public bool FlashUpdate, UnityUpdate, HabboxUpdate, Required;
+        public bool FlashUpdate, UnityUpdate, HabboxUpdate, ShockwaveUpdate, Required;
 
         public UpdateResult() { }
-        public UpdateResult(bool flashUpdate, bool unityUpdate, bool habboxUpdate, bool required = false)
+        public UpdateResult(bool flashUpdate, bool unityUpdate, bool habboxUpdate, bool shockwaveUpdate, bool required = false)
         {
             FlashUpdate = flashUpdate;
             UnityUpdate = unityUpdate;
             HabboxUpdate = habboxUpdate;
+            ShockwaveUpdate = shockwaveUpdate;
             Required = required;
         }
     }

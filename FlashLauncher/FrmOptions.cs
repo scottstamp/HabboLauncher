@@ -16,11 +16,21 @@ namespace HabboLauncher
         {
             InitializeComponent();
 
-            txtGEarthPath.Text = Program.Settings.GEarthPath;
-            ofd.FileName = Program.Settings.GEarthPath;
-            chkLaunchGEarth.Checked = Program.Settings.LaunchGEarth;
-            chkIgnoreClientUpdates.Checked = Program.Settings.IgnoreClientUpdates;
-            numAutoLaunchDelay.Value = Program.Settings.AutoLaunchDelay;
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                txtGEarthPath.Text = Program.Settings.GEarthPath;
+                ofd.FileName = Program.Settings.GEarthPath;
+                chkLaunchGEarth.Checked = Program.Settings.LaunchGEarth;
+                chkIgnoreClientUpdates.Checked = Program.Settings.IgnoreClientUpdates;
+                chkIgnoreUpdateFlash.Checked = Program.Settings.IgnoreClientUpdatesFlash;
+                chkIgnoreUpdateUnity.Checked = Program.Settings.IgnoreClientUpdatesUnity;
+                chkIgnoreUpdateShockwave.Checked = Program.Settings.IgnoreClientUpdatesOrigins;
+                chkIgnoreUpdateHabbox.Checked = Program.Settings.IgnoreClientUpdatesHabbox;
+                chkOriginsXL.Checked = Program.Settings.OriginsXL;
+                defaultOriginsServer.SelectedIndex = Program.Settings.DefaultOriginsServer;
+                txtGEarthOriginsPath.Text = Program.Settings.GEarthOriginsPath;
+                numAutoLaunchDelay.Value = Program.Settings.AutoLaunchDelay;
+            }
         }
 
         protected override CreateParams CreateParams
@@ -54,14 +64,61 @@ namespace HabboLauncher
                 }
             }
 
+            if (defaultOriginsServer.SelectedIndex > 0)
+            {
+                MessageBox.Show("Now once you click on Habbo Origins on the launcher it will open by default on the selected server.");
+            }
+            else
+            {
+                defaultOriginsServer.SelectedIndex = 0;
+            }
+
+            Program.Settings.DefaultOriginsServer = defaultOriginsServer.SelectedIndex;
             Program.Settings.GEarthPath = txtGEarthPath.Text;
+            Program.Settings.GEarthOriginsPath = txtGEarthOriginsPath.Text;
+            Program.Settings.OriginsXL = chkOriginsXL.Checked;
             Program.Settings.LaunchGEarth = chkLaunchGEarth.Checked;
             Program.Settings.IgnoreClientUpdates = chkIgnoreClientUpdates.Checked;
+            
             Program.Settings.AutoLaunchDelay = (int)numAutoLaunchDelay.Value;
 
             Program.Settings.SaveSettings();
 
             Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmOptions_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGEarthOriginsBrowse_Click(object sender, EventArgs e)
+        {
+            var result = ofd.ShowDialog();
+            if (result == DialogResult.OK && ofd.CheckFileExists)
+            {
+                txtGEarthOriginsPath.Text = ofd.FileName;
+            }
+        }
+
+        private void defaultOriginsServer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using HabboLauncher.Utilities;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,9 +16,17 @@ namespace HabboLauncher
         private SelfUpdater SelfUpdater;
         private bool closing = false;
 
+
+
         public MainFrm(string[] args)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.BackColor = Color.Black;
+            this.DoubleBuffered = true;
             InitializeComponent();
+            btnLaunchOriginsBR.Hide();
+            btnLaunchOriginsES.Hide();
+            btnLaunchOriginsUS.Hide();
             FormClosing += (s, e) => closing = true;
 
             if (args.Length == 1)
@@ -239,6 +248,75 @@ namespace HabboLauncher
         {
             Program.Settings.LaunchGEarth = chkLaunchGearth.Checked;
             Program.Settings.SaveSettings();
+        }
+
+        private void btnLaunchHabboOrigins_Click(object sender, EventArgs e)
+        {
+
+            if (Program.Settings.DefaultOriginsServer == 0)
+            {
+                btnLaunchHabboOrigins.Hide();
+                btnLaunchOriginsBR.Show();
+                btnLaunchOriginsES.Show();
+                btnLaunchOriginsUS.Show();
+                return;
+            }
+
+            if(Program.Settings.DefaultOriginsServer == 1)
+            {
+                launchOriginsClient("us");
+            }
+
+            if (Program.Settings.DefaultOriginsServer == 2)
+            {
+                launchOriginsClient("br");
+            }
+
+            if (Program.Settings.DefaultOriginsServer == 3)
+            {
+                launchOriginsClient("es");
+            }
+
+        }
+
+        private void launchOriginsClient(string server)
+        {
+            try
+            {
+                Program.Settings.LastLaunched = "shockwave";
+                Program.Settings.SaveSettings();
+
+                Task.Run(() =>
+                {
+                    Launcher.LaunchOriginsClient(server, Program.Settings.LaunchGEarth, Program.Settings.OriginsXL);
+
+                    Invoke((MethodInvoker)delegate
+                    {
+                        Close();
+                    });
+                });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        private void btnLaunchOriginsUS_Click(object sender, EventArgs e)
+        {
+            launchOriginsClient("us");
+        }
+
+        private void btnLaunchOriginsBR_Click(object sender, EventArgs e)
+        {
+            launchOriginsClient("br");
+        }
+
+        private void btnLaunchOriginsES_Click(object sender, EventArgs e)
+        {
+            launchOriginsClient("es");
         }
 
         private void MainFrm_Load(object sender, EventArgs e)

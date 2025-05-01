@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace HabboLauncher
@@ -65,6 +66,51 @@ namespace HabboLauncher
                 WorkingDirectory = Path.Combine(Program.Updater.HabboxInstall.Path, "StandaloneWindows"),
                 Arguments = $"-server {server} -ticket \"{ticket}\""
             });
+        }
+
+        public static void LaunchOriginsClient(string server, bool withGEarth = true, bool isXl = false)
+        {
+            if (withGEarth && File.Exists(Program.Settings.GEarthOriginsPath))
+            {
+                Process.Start(new ProcessStartInfo(Path.GetFileName(Program.Settings.GEarthOriginsPath))
+                {
+                    WorkingDirectory = Path.GetDirectoryName(Program.Settings.GEarthOriginsPath),
+                    Arguments = "-c origins"
+                });
+
+                Task.Delay(1000).Wait();
+            }else if (withGEarth && File.Exists(Program.Settings.GEarthPath))
+            {
+                Process.Start(new ProcessStartInfo(Path.GetFileName(Program.Settings.GEarthPath))
+                {
+                    WorkingDirectory = Path.GetDirectoryName(Program.Settings.GEarthPath),
+                    Arguments = "-c origins"
+                });
+
+                Task.Delay(1000).Wait();
+            }
+
+            string tempDir = Path.Combine(Path.GetTempPath(), "shockwave-habbo-" + Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(tempDir);
+
+            string sourceDir = Program.Updater.ShockwaveInstall.Path;
+            Program.CopyDirectory(sourceDir, tempDir);
+
+            string xlString = isXl ? "-xl" : "";
+
+            string exePath = Path.Combine(tempDir, $"HabboHotel-o{server}{xlString}.exe");
+            if (File.Exists(exePath))
+            {
+                Process.Start(new ProcessStartInfo(exePath)
+                {
+                    WorkingDirectory = tempDir,
+                    Arguments = ""
+                });
+            }
+            else
+            {
+                MessageBox.Show($"Executable not found in temp folder: {exePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }
