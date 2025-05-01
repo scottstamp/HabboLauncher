@@ -79,6 +79,10 @@ namespace HabboLauncher
             Program.Settings.OriginsXL = chkOriginsXL.Checked;
             Program.Settings.LaunchGEarth = chkLaunchGEarth.Checked;
             Program.Settings.IgnoreClientUpdates = chkIgnoreClientUpdates.Checked;
+            Program.Settings.IgnoreClientUpdatesFlash = chkIgnoreUpdateFlash.Checked; 
+            Program.Settings.IgnoreClientUpdatesHabbox = chkIgnoreUpdateHabbox.Checked;
+            Program.Settings.IgnoreClientUpdatesOrigins = chkIgnoreUpdateShockwave.Checked;
+            Program.Settings.IgnoreClientUpdatesUnity = chkIgnoreUpdateUnity.Checked;
             
             Program.Settings.AutoLaunchDelay = (int)numAutoLaunchDelay.Value;
 
