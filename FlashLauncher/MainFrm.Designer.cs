@@ -120,7 +120,7 @@ namespace HabboLauncher
             // 
             this.btnLaunchOriginsUS.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchOriginsUS.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchOriginsUS.Image")));
-            this.btnLaunchOriginsUS.Location = new System.Drawing.Point(22, 201);
+            this.btnLaunchOriginsUS.Location = new System.Drawing.Point(19, 201);
             this.btnLaunchOriginsUS.Name = "btnLaunchOriginsUS";
             this.btnLaunchOriginsUS.Size = new System.Drawing.Size(48, 40);
             this.btnLaunchOriginsUS.TabIndex = 12;
@@ -131,7 +131,7 @@ namespace HabboLauncher
             // 
             this.btnLaunchOriginsBR.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchOriginsBR.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchOriginsBR.Image")));
-            this.btnLaunchOriginsBR.Location = new System.Drawing.Point(76, 201);
+            this.btnLaunchOriginsBR.Location = new System.Drawing.Point(73, 201);
             this.btnLaunchOriginsBR.Name = "btnLaunchOriginsBR";
             this.btnLaunchOriginsBR.Size = new System.Drawing.Size(48, 40);
             this.btnLaunchOriginsBR.TabIndex = 13;
@@ -142,7 +142,7 @@ namespace HabboLauncher
             // 
             this.btnLaunchOriginsES.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchOriginsES.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchOriginsES.Image")));
-            this.btnLaunchOriginsES.Location = new System.Drawing.Point(127, 201);
+            this.btnLaunchOriginsES.Location = new System.Drawing.Point(124, 201);
             this.btnLaunchOriginsES.Name = "btnLaunchOriginsES";
             this.btnLaunchOriginsES.Size = new System.Drawing.Size(48, 40);
             this.btnLaunchOriginsES.TabIndex = 14;
@@ -155,7 +155,7 @@ namespace HabboLauncher
             this.btnLaunchHabboOrigins.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLaunchHabboOrigins.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchHabboOrigins.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchHabboOrigins.Image")));
-            this.btnLaunchHabboOrigins.Location = new System.Drawing.Point(22, 171);
+            this.btnLaunchHabboOrigins.Location = new System.Drawing.Point(19, 171);
             this.btnLaunchHabboOrigins.Name = "btnLaunchHabboOrigins";
             this.btnLaunchHabboOrigins.Size = new System.Drawing.Size(153, 100);
             this.btnLaunchHabboOrigins.TabIndex = 10;
