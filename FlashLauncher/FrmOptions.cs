@@ -136,9 +136,9 @@ namespace HabboLauncher
 
             DialogResult result = MessageBox.Show(
                 "Please ensure that you only use trusted SWF files.\n\n" +
-                "Running unverified or modified SWF files can pose serious security risks, including the execution of malicious code on your system.\n\n" +
-                "Use this feature with caution. We are not responsible for any damage or misuse resulting from custom SWF files.",
-                "⚠ Security Warning",
+                "Running unverified or modified SWF files can pose serious security risks, including the execution of malicious code on your computer.\n\n" +
+                "Use this feature with caution. We are not responsible for any damage or misuse resulting from custom SWF files.\n\nBy pressing OK, this program will download the file from the Link you typed",
+                "HabboLauncher ~ Alert",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning
             );
@@ -157,7 +157,7 @@ namespace HabboLauncher
                         "Make sure you are using a downloadable link to the SWF.\n\n" +
                         "For instance:\n" +
                         "https://github.com/LilithRainbows/HabboAirPlus/raw/refs/heads/main/HabboAir.swf",
-                        "Download Error",
+                        "HabboLauncher ~ Download Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                     );

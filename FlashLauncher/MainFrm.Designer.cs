@@ -52,8 +52,9 @@ namespace HabboLauncher
             // 
             this.chkAutoLaunch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkAutoLaunch.AutoSize = true;
-            this.chkAutoLaunch.Location = new System.Drawing.Point(9, 270);
+            this.chkAutoLaunch.Location = new System.Drawing.Point(9, 257);
             this.chkAutoLaunch.Name = "chkAutoLaunch";
+            this.chkAutoLaunch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkAutoLaunch.Size = new System.Drawing.Size(92, 17);
             this.chkAutoLaunch.TabIndex = 2;
             this.chkAutoLaunch.Text = "Auto: AIR (5s)";
@@ -71,7 +72,7 @@ namespace HabboLauncher
             // btnOptions
             // 
             this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOptions.Location = new System.Drawing.Point(361, 286);
+            this.btnOptions.Location = new System.Drawing.Point(361, 249);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(75, 21);
             this.btnOptions.TabIndex = 5;
@@ -95,7 +96,7 @@ namespace HabboLauncher
             // 
             this.chkLaunchGearth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkLaunchGearth.AutoSize = true;
-            this.chkLaunchGearth.Location = new System.Drawing.Point(107, 270);
+            this.chkLaunchGearth.Location = new System.Drawing.Point(107, 257);
             this.chkLaunchGearth.Name = "chkLaunchGearth";
             this.chkLaunchGearth.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkLaunchGearth.Size = new System.Drawing.Size(101, 17);
@@ -180,7 +181,7 @@ namespace HabboLauncher
             this.ssInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblVersionLink,
             this.tssOptions});
-            this.ssInfo.Location = new System.Drawing.Point(0, 314);
+            this.ssInfo.Location = new System.Drawing.Point(0, 277);
             this.ssInfo.Name = "ssInfo";
             this.ssInfo.Size = new System.Drawing.Size(336, 22);
             this.ssInfo.SizingGrip = false;
@@ -211,7 +212,7 @@ namespace HabboLauncher
             // 
             this.chkUseCustomSwf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkUseCustomSwf.AutoSize = true;
-            this.chkUseCustomSwf.Location = new System.Drawing.Point(214, 270);
+            this.chkUseCustomSwf.Location = new System.Drawing.Point(214, 257);
             this.chkUseCustomSwf.Name = "chkUseCustomSwf";
             this.chkUseCustomSwf.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkUseCustomSwf.Size = new System.Drawing.Size(110, 17);
@@ -224,7 +225,7 @@ namespace HabboLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 336);
+            this.ClientSize = new System.Drawing.Size(336, 299);
             this.Controls.Add(this.chkUseCustomSwf);
             this.Controls.Add(this.ssInfo);
             this.Controls.Add(this.btnLaunchOriginsES);

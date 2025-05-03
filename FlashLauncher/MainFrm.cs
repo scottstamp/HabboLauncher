@@ -5,13 +5,16 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HabboLauncher
 {
     public partial class MainFrm : Form
     {
         private readonly Regex tokenRe = new Regex(@"^([\w]+)\.([\w-]+\.V4)");
+        private const string txtCodePlaceholder = "Login Code";
         private string server = "", ticket = "";
         private SelfUpdater SelfUpdater;
         private bool closing = false;
@@ -24,6 +27,13 @@ namespace HabboLauncher
             btnLaunchOriginsBR.Hide();
             btnLaunchOriginsES.Hide();
             btnLaunchOriginsUS.Hide();
+
+            txtCode.Text = txtCodePlaceholder;
+            txtCode.ForeColor = Color.Gray;
+
+            txtCode.GotFocus += RemovePlaceholder;
+            txtCode.LostFocus += SetPlaceholder;
+
             FormClosing += (s, e) => closing = true;
 
             if (args.Length == 1)
@@ -341,6 +351,25 @@ namespace HabboLauncher
         {
             chkLaunchGearth.Checked = launchGearth;
             chkUseCustomSwf.Checked = useCustomSwf;
+        }
+
+        private void RemovePlaceholder(object sender, EventArgs e)
+        {
+            if (txtCode.Text == txtCodePlaceholder)
+            {
+                txtCode.Text = "";
+                txtCode.ForeColor = Color.Black;
+            }
+
+        }
+
+        private void SetPlaceholder(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCode.Text))
+            {
+                txtCode.Text = txtCodePlaceholder;
+                txtCode.ForeColor = Color.Gray;
+            }
         }
     }
 }
