@@ -165,7 +165,6 @@ namespace HabboLauncher
             this.lblDefaultOriginsServer.Size = new System.Drawing.Size(113, 13);
             this.lblDefaultOriginsServer.TabIndex = 8;
             this.lblDefaultOriginsServer.Text = "Default Origins Server:";
-            this.lblDefaultOriginsServer.Click += new System.EventHandler(this.label1_Click);
             // 
             // chkOriginsXL
             // 
@@ -317,7 +316,6 @@ namespace HabboLauncher
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmOptions";
             this.Text = "HabboLauncher: Options";
-            this.Load += new System.EventHandler(this.FrmOptions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numAutoLaunchDelay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

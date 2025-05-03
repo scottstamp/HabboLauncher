@@ -222,8 +222,11 @@ namespace HabboLauncher
                     await webClient.DownloadFileTaskAsync(swfLink, swfFilePath);
                 }
 
-                if(File.Exists(swfFilePath)) 
+                if(File.Exists(swfFilePath))
+                {
+                    File.Delete(Path.Combine(latestInstallationPath, "HabboAir.custom.swf"));
                     File.Copy(swfFilePath, Path.Combine(latestInstallationPath, "HabboAir.custom.swf"));
+                }
             }
             catch (Exception ex)
             {
