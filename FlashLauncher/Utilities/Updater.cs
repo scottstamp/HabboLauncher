@@ -234,9 +234,7 @@ namespace HabboLauncher
         public async Task CheckForSwfUpdates()
         {
             var swfLink = Program.Settings.CustomSWFLink;
-
-            var extractedPath = Path.Combine(Program.AppCacheDir, "downloads", "air", Program.Updater.lastCheckData.FlashWindowsVersion);
-            var customSwfFile = Path.Combine(extractedPath, "HabboAir.custom.swf");
+            var customSwfFile = Path.Combine(Program.AppCacheDir, "HabboAir.custom.swf");
 
             try
             {

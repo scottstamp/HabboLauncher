@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HabboLauncher
@@ -30,9 +31,12 @@ namespace HabboLauncher
             if (!Settings.IgnoreClientUpdates)
                 ShowUpdatePrompt(Updater.CheckForUpdate());
 
-            if(Settings.UseCustomSwf)
+            if(Settings.UseCustomSwf && !string.IsNullOrWhiteSpace(Settings.CustomSWFLink))
             {
-                Updater.CheckForSwfUpdates();
+                Task.Run(async () =>
+                {
+                   await Updater.CheckForSwfUpdates();
+                });
             }
             
             Application.EnableVisualStyles();
