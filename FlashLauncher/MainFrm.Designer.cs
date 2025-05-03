@@ -84,7 +84,7 @@ namespace HabboLauncher
             this.btnLaunchFlash.Enabled = false;
             this.btnLaunchFlash.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchFlash.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchFlash.Image")));
-            this.btnLaunchFlash.Location = new System.Drawing.Point(178, 66);
+            this.btnLaunchFlash.Location = new System.Drawing.Point(19, 65);
             this.btnLaunchFlash.Name = "btnLaunchFlash";
             this.btnLaunchFlash.Size = new System.Drawing.Size(153, 100);
             this.btnLaunchFlash.TabIndex = 0;
@@ -106,6 +106,7 @@ namespace HabboLauncher
             // 
             // btnLaunchHabbox
             // 
+            this.btnLaunchHabbox.BackColor = System.Drawing.Color.Transparent;
             this.btnLaunchHabbox.Enabled = false;
             this.btnLaunchHabbox.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchHabbox.Image")));
             this.btnLaunchHabbox.Location = new System.Drawing.Point(178, 171);
@@ -167,7 +168,7 @@ namespace HabboLauncher
             this.btnLaunchUnity.Enabled = false;
             this.btnLaunchUnity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchUnity.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchUnity.Image")));
-            this.btnLaunchUnity.Location = new System.Drawing.Point(22, 65);
+            this.btnLaunchUnity.Location = new System.Drawing.Point(178, 65);
             this.btnLaunchUnity.Name = "btnLaunchUnity";
             this.btnLaunchUnity.Size = new System.Drawing.Size(153, 100);
             this.btnLaunchUnity.TabIndex = 9;
