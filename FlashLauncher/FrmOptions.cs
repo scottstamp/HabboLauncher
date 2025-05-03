@@ -17,23 +17,20 @@ namespace HabboLauncher
         {
             InitializeComponent();
 
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-            {
-                txtGEarthPath.Text = Program.Settings.GEarthPath;
-                ofd.FileName = Program.Settings.GEarthPath;
-                chkLaunchGEarth.Checked = Program.Settings.LaunchGEarth;
-                chkIgnoreClientUpdates.Checked = Program.Settings.IgnoreClientUpdates;
-                chkIgnoreUpdateFlash.Checked = Program.Settings.IgnoreClientUpdatesFlash;
-                chkIgnoreUpdateUnity.Checked = Program.Settings.IgnoreClientUpdatesUnity;
-                chkIgnoreUpdateShockwave.Checked = Program.Settings.IgnoreClientUpdatesOrigins;
-                chkIgnoreUpdateHabbox.Checked = Program.Settings.IgnoreClientUpdatesHabbox;
-                chkOriginsXL.Checked = Program.Settings.OriginsXL;
-                defaultOriginsServer.SelectedIndex = Program.Settings.DefaultOriginsServer;
-                txtGEarthOriginsPath.Text = Program.Settings.GEarthOriginsPath;
-                txtCustomSwfFlash.Text = Program.Settings.CustomSWFLink;
-                chkUseCustomSwf.Checked = Program.Settings.UseCustomSwf;
-                numAutoLaunchDelay.Value = Program.Settings.AutoLaunchDelay;
-            }
+            txtGEarthPath.Text = Program.Settings.GEarthPath;
+            ofd.FileName = Program.Settings.GEarthPath;
+            chkLaunchGEarth.Checked = Program.Settings.LaunchGEarth;
+            chkIgnoreClientUpdates.Checked = Program.Settings.IgnoreClientUpdates;
+            chkIgnoreUpdateFlash.Checked = Program.Settings.IgnoreClientUpdatesFlash;
+            chkIgnoreUpdateUnity.Checked = Program.Settings.IgnoreClientUpdatesUnity;
+            chkIgnoreUpdateShockwave.Checked = Program.Settings.IgnoreClientUpdatesOrigins;
+            chkIgnoreUpdateHabbox.Checked = Program.Settings.IgnoreClientUpdatesHabbox;
+            chkOriginsXL.Checked = Program.Settings.OriginsXL;
+            defaultOriginsServer.SelectedIndex = Program.Settings.DefaultOriginsServer;
+            txtGEarthOriginsPath.Text = Program.Settings.GEarthOriginsPath;
+            txtCustomSwfFlash.Text = Program.Settings.CustomSWFLink;
+            chkUseCustomSwf.Checked = Program.Settings.UseCustomSwf;
+            numAutoLaunchDelay.Value = Program.Settings.AutoLaunchDelay;
         }
 
         protected override CreateParams CreateParams
@@ -100,21 +97,6 @@ namespace HabboLauncher
 
 
             Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrmOptions_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnGEarthOriginsBrowse_Click(object sender, EventArgs e)

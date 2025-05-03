@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -100,7 +99,7 @@ namespace HabboLauncher
 
             if (result.FlashUpdate && result.UnityUpdate && result.ShockwaveUpdate)
             {
-                var message = "Updates for the both client versions are available. Would you like to download them?";
+                var message = "Updates for the both client versions and Origins are available. Would you like to download them?";
 
                 if (result.Required)
                     message = "Existing client files were not found, please click yes to download client files and continue.";
