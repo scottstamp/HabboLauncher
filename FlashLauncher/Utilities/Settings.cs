@@ -8,8 +8,10 @@ namespace HabboLauncher
         public string Lang { get; set; } = "en";
 
         public bool LaunchGEarth { get; set; } = false;
-        public string GEarthPath { get; set; } = @"C:\Users\scott\Downloads\G-Earth-1.4.1-Windows_64bit\G-Earth.exe";
-        public string GEarthOriginsPath { get; set; } = @"C:\Users\Thauan\Downloads\G-Earth-1.5.4-beta-15\G-Earth.exe";
+        public string GEarthPath { get; set; } = @"";
+        public string GEarthOriginsPath { get; set; } = @"";
+        public string CustomSWFLink { get; set; } = @"";
+        public bool UseCustomSwf { get; set; } = false;
         public bool IgnoreClientUpdates { get; set; } = false;
         public string LastLaunched { get; set; } = "air";
         public bool AutoLaunch { get; set; } = false;

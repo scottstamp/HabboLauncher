@@ -20,9 +20,6 @@ namespace HabboLauncher
 
         public MainFrm(string[] args)
         {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.BackColor = Color.Black;
-            this.DoubleBuffered = true;
             InitializeComponent();
             btnLaunchOriginsBR.Hide();
             btnLaunchOriginsES.Hide();
@@ -306,16 +303,19 @@ namespace HabboLauncher
 
         private void btnLaunchOriginsUS_Click(object sender, EventArgs e)
         {
+            Program.Settings.DefaultOriginsServer = 1;
             launchOriginsClient("us");
         }
 
         private void btnLaunchOriginsBR_Click(object sender, EventArgs e)
         {
+            Program.Settings.DefaultOriginsServer = 2;
             launchOriginsClient("br");
         }
 
         private void btnLaunchOriginsES_Click(object sender, EventArgs e)
         {
+            Program.Settings.DefaultOriginsServer = 3;
             launchOriginsClient("es");
         }
 
@@ -323,7 +323,24 @@ namespace HabboLauncher
         {
             SelfUpdater = new SelfUpdater(this);
             chkLaunchGearth.Checked = Program.Settings.LaunchGEarth;
+            chkUseCustomSwf.Checked = Program.Settings.UseCustomSwf;
             HandleAutoLaunch();
+        }
+
+        private void chkUseCustomSwf_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.Settings.UseCustomSwf = chkUseCustomSwf.Checked;
+
+            Task.Run(() =>
+            {
+                Launcher.ChangeFlashSwf();
+            });
+        }
+
+        public void validateSettings(bool launchGearth, bool useCustomSwf)
+        {
+            chkLaunchGearth.Checked = launchGearth;
+            chkUseCustomSwf.Checked = useCustomSwf;
         }
     }
 }

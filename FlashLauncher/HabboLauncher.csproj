@@ -263,6 +263,7 @@
     <Content Include="Images\air.png" />
     <Content Include="Images\unity.png" />
     <Content Include="Images\FlashLauncher.ico" />
+    <None Include="Resources\btnLaunchHabbox.Image.bmp" />
     <None Include="Images\habbox.png" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -19,6 +20,7 @@ namespace HabboLauncher
         [STAThread]
         static void Main(string[] args)
         {
+
             CreateOriginalDirectories();
             
             Updater = new();
@@ -27,6 +29,11 @@ namespace HabboLauncher
             if (!CheckExecutingDirectory()) return;
             if (!Settings.IgnoreClientUpdates)
                 ShowUpdatePrompt(Updater.CheckForUpdate());
+
+            if(Settings.UseCustomSwf)
+            {
+                Updater.CheckForSwfUpdates();
+            }
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -40,23 +40,25 @@ namespace HabboLauncher
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.chkIgnoreClientUpdates = new System.Windows.Forms.CheckBox();
             this.defaultOriginsServer = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDefaultOriginsServer = new System.Windows.Forms.Label();
             this.chkOriginsXL = new System.Windows.Forms.CheckBox();
             this.btnGEarthOriginsBrowse = new System.Windows.Forms.Button();
             this.txtGEarthOriginsPath = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblGEarthOriginsPath = new System.Windows.Forms.Label();
+            this.lblIgnoreUpdatesFor = new System.Windows.Forms.Label();
             this.chkIgnoreUpdateShockwave = new System.Windows.Forms.CheckBox();
             this.chkIgnoreUpdateHabbox = new System.Windows.Forms.CheckBox();
             this.chkIgnoreUpdateUnity = new System.Windows.Forms.CheckBox();
             this.chkIgnoreUpdateFlash = new System.Windows.Forms.CheckBox();
+            this.txtCustomSwfFlash = new System.Windows.Forms.TextBox();
+            this.lblCustomSwf = new System.Windows.Forms.Label();
+            this.chkUseCustomSwf = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numAutoLaunchDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAutoLaunchDelay
             // 
             this.lblAutoLaunchDelay.AutoSize = true;
-            this.lblAutoLaunchDelay.ForeColor = System.Drawing.Color.White;
             this.lblAutoLaunchDelay.Location = new System.Drawing.Point(9, 14);
             this.lblAutoLaunchDelay.Name = "lblAutoLaunchDelay";
             this.lblAutoLaunchDelay.Size = new System.Drawing.Size(97, 13);
@@ -83,8 +85,7 @@ namespace HabboLauncher
             // lblGEarthPath
             // 
             this.lblGEarthPath.AutoSize = true;
-            this.lblGEarthPath.ForeColor = System.Drawing.Color.White;
-            this.lblGEarthPath.Location = new System.Drawing.Point(9, 43);
+            this.lblGEarthPath.Location = new System.Drawing.Point(8, 48);
             this.lblGEarthPath.Name = "lblGEarthPath";
             this.lblGEarthPath.Size = new System.Drawing.Size(71, 13);
             this.lblGEarthPath.TabIndex = 2;
@@ -99,7 +100,7 @@ namespace HabboLauncher
             // 
             // btnGEarthBrowse
             // 
-            this.btnGEarthBrowse.Location = new System.Drawing.Point(163, 38);
+            this.btnGEarthBrowse.Location = new System.Drawing.Point(163, 43);
             this.btnGEarthBrowse.Name = "btnGEarthBrowse";
             this.btnGEarthBrowse.Size = new System.Drawing.Size(90, 23);
             this.btnGEarthBrowse.TabIndex = 3;
@@ -111,8 +112,7 @@ namespace HabboLauncher
             // 
             this.chkLaunchGEarth.AutoSize = true;
             this.chkLaunchGEarth.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkLaunchGEarth.ForeColor = System.Drawing.Color.White;
-            this.chkLaunchGEarth.Location = new System.Drawing.Point(11, 235);
+            this.chkLaunchGEarth.Location = new System.Drawing.Point(11, 271);
             this.chkLaunchGEarth.Name = "chkLaunchGEarth";
             this.chkLaunchGEarth.Size = new System.Drawing.Size(104, 17);
             this.chkLaunchGEarth.TabIndex = 4;
@@ -121,7 +121,7 @@ namespace HabboLauncher
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(178, 345);
+            this.btnSave.Location = new System.Drawing.Point(177, 398);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
@@ -137,8 +137,7 @@ namespace HabboLauncher
             // 
             this.chkIgnoreClientUpdates.AutoSize = true;
             this.chkIgnoreClientUpdates.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreClientUpdates.ForeColor = System.Drawing.Color.White;
-            this.chkIgnoreClientUpdates.Location = new System.Drawing.Point(11, 258);
+            this.chkIgnoreClientUpdates.Location = new System.Drawing.Point(11, 294);
             this.chkIgnoreClientUpdates.Name = "chkIgnoreClientUpdates";
             this.chkIgnoreClientUpdates.Size = new System.Drawing.Size(145, 17);
             this.chkIgnoreClientUpdates.TabIndex = 6;
@@ -153,29 +152,26 @@ namespace HabboLauncher
             "English",
             "Portuguese",
             "Spanish"});
-            this.defaultOriginsServer.Location = new System.Drawing.Point(12, 185);
+            this.defaultOriginsServer.Location = new System.Drawing.Point(12, 221);
             this.defaultOriginsServer.Name = "defaultOriginsServer";
             this.defaultOriginsServer.Size = new System.Drawing.Size(241, 21);
             this.defaultOriginsServer.TabIndex = 7;
-            this.defaultOriginsServer.SelectedIndexChanged += new System.EventHandler(this.defaultOriginsServer_SelectedIndexChanged);
             // 
-            // label1
+            // lblDefaultOriginsServer
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(9, 169);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Default Origins Server:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblDefaultOriginsServer.AutoSize = true;
+            this.lblDefaultOriginsServer.Location = new System.Drawing.Point(9, 205);
+            this.lblDefaultOriginsServer.Name = "lblDefaultOriginsServer";
+            this.lblDefaultOriginsServer.Size = new System.Drawing.Size(113, 13);
+            this.lblDefaultOriginsServer.TabIndex = 8;
+            this.lblDefaultOriginsServer.Text = "Default Origins Server:";
+            this.lblDefaultOriginsServer.Click += new System.EventHandler(this.label1_Click);
             // 
             // chkOriginsXL
             // 
             this.chkOriginsXL.AutoSize = true;
             this.chkOriginsXL.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkOriginsXL.ForeColor = System.Drawing.Color.White;
-            this.chkOriginsXL.Location = new System.Drawing.Point(11, 212);
+            this.chkOriginsXL.Location = new System.Drawing.Point(11, 248);
             this.chkOriginsXL.Name = "chkOriginsXL";
             this.chkOriginsXL.Size = new System.Drawing.Size(77, 17);
             this.chkOriginsXL.TabIndex = 9;
@@ -184,7 +180,7 @@ namespace HabboLauncher
             // 
             // btnGEarthOriginsBrowse
             // 
-            this.btnGEarthOriginsBrowse.Location = new System.Drawing.Point(163, 107);
+            this.btnGEarthOriginsBrowse.Location = new System.Drawing.Point(163, 148);
             this.btnGEarthOriginsBrowse.Name = "btnGEarthOriginsBrowse";
             this.btnGEarthOriginsBrowse.Size = new System.Drawing.Size(90, 23);
             this.btnGEarthOriginsBrowse.TabIndex = 12;
@@ -194,37 +190,34 @@ namespace HabboLauncher
             // 
             // txtGEarthOriginsPath
             // 
-            this.txtGEarthOriginsPath.Location = new System.Drawing.Point(12, 138);
+            this.txtGEarthOriginsPath.Location = new System.Drawing.Point(12, 174);
             this.txtGEarthOriginsPath.Name = "txtGEarthOriginsPath";
             this.txtGEarthOriginsPath.Size = new System.Drawing.Size(241, 20);
             this.txtGEarthOriginsPath.TabIndex = 10;
             // 
-            // label2
+            // lblGEarthOriginsPath
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(9, 112);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "G-Earth Origins Path (optional):";
+            this.lblGEarthOriginsPath.AutoSize = true;
+            this.lblGEarthOriginsPath.Location = new System.Drawing.Point(9, 153);
+            this.lblGEarthOriginsPath.Name = "lblGEarthOriginsPath";
+            this.lblGEarthOriginsPath.Size = new System.Drawing.Size(152, 13);
+            this.lblGEarthOriginsPath.TabIndex = 11;
+            this.lblGEarthOriginsPath.Text = "G-Earth Origins Path (optional):";
             // 
-            // label3
+            // lblIgnoreUpdatesFor
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(13, 286);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Ignore Updates for:";
+            this.lblIgnoreUpdatesFor.AutoSize = true;
+            this.lblIgnoreUpdatesFor.Location = new System.Drawing.Point(13, 322);
+            this.lblIgnoreUpdatesFor.Name = "lblIgnoreUpdatesFor";
+            this.lblIgnoreUpdatesFor.Size = new System.Drawing.Size(98, 13);
+            this.lblIgnoreUpdatesFor.TabIndex = 13;
+            this.lblIgnoreUpdatesFor.Text = "Ignore Updates for:";
             // 
             // chkIgnoreUpdateShockwave
             // 
             this.chkIgnoreUpdateShockwave.AutoSize = true;
             this.chkIgnoreUpdateShockwave.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreUpdateShockwave.ForeColor = System.Drawing.Color.White;
-            this.chkIgnoreUpdateShockwave.Location = new System.Drawing.Point(34, 308);
+            this.chkIgnoreUpdateShockwave.Location = new System.Drawing.Point(34, 344);
             this.chkIgnoreUpdateShockwave.Name = "chkIgnoreUpdateShockwave";
             this.chkIgnoreUpdateShockwave.Size = new System.Drawing.Size(58, 17);
             this.chkIgnoreUpdateShockwave.TabIndex = 14;
@@ -235,21 +228,18 @@ namespace HabboLauncher
             // 
             this.chkIgnoreUpdateHabbox.AutoSize = true;
             this.chkIgnoreUpdateHabbox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreUpdateHabbox.ForeColor = System.Drawing.Color.White;
-            this.chkIgnoreUpdateHabbox.Location = new System.Drawing.Point(29, 325);
+            this.chkIgnoreUpdateHabbox.Location = new System.Drawing.Point(29, 361);
             this.chkIgnoreUpdateHabbox.Name = "chkIgnoreUpdateHabbox";
             this.chkIgnoreUpdateHabbox.Size = new System.Drawing.Size(63, 17);
             this.chkIgnoreUpdateHabbox.TabIndex = 15;
             this.chkIgnoreUpdateHabbox.Text = "Habbox";
             this.chkIgnoreUpdateHabbox.UseVisualStyleBackColor = true;
-            this.chkIgnoreUpdateHabbox.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // chkIgnoreUpdateUnity
             // 
             this.chkIgnoreUpdateUnity.AutoSize = true;
             this.chkIgnoreUpdateUnity.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreUpdateUnity.ForeColor = System.Drawing.Color.White;
-            this.chkIgnoreUpdateUnity.Location = new System.Drawing.Point(111, 308);
+            this.chkIgnoreUpdateUnity.Location = new System.Drawing.Point(111, 344);
             this.chkIgnoreUpdateUnity.Name = "chkIgnoreUpdateUnity";
             this.chkIgnoreUpdateUnity.Size = new System.Drawing.Size(50, 17);
             this.chkIgnoreUpdateUnity.TabIndex = 16;
@@ -260,30 +250,60 @@ namespace HabboLauncher
             // 
             this.chkIgnoreUpdateFlash.AutoSize = true;
             this.chkIgnoreUpdateFlash.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreUpdateFlash.ForeColor = System.Drawing.Color.White;
-            this.chkIgnoreUpdateFlash.Location = new System.Drawing.Point(110, 325);
+            this.chkIgnoreUpdateFlash.Location = new System.Drawing.Point(110, 361);
             this.chkIgnoreUpdateFlash.Name = "chkIgnoreUpdateFlash";
             this.chkIgnoreUpdateFlash.Size = new System.Drawing.Size(51, 17);
             this.chkIgnoreUpdateFlash.TabIndex = 17;
             this.chkIgnoreUpdateFlash.Text = "Flash";
             this.chkIgnoreUpdateFlash.UseVisualStyleBackColor = true;
             // 
+            // txtCustomSwfFlash
+            // 
+            this.txtCustomSwfFlash.Location = new System.Drawing.Point(11, 117);
+            this.txtCustomSwfFlash.Name = "txtCustomSwfFlash";
+            this.txtCustomSwfFlash.Size = new System.Drawing.Size(241, 20);
+            this.txtCustomSwfFlash.TabIndex = 18;
+            this.txtCustomSwfFlash.Leave += new System.EventHandler(this.txtCustomSwfFlash_Leave);
+            // 
+            // lblCustomSwf
+            // 
+            this.lblCustomSwf.AutoSize = true;
+            this.lblCustomSwf.Location = new System.Drawing.Point(8, 101);
+            this.lblCustomSwf.Name = "lblCustomSwf";
+            this.lblCustomSwf.Size = new System.Drawing.Size(72, 13);
+            this.lblCustomSwf.TabIndex = 19;
+            this.lblCustomSwf.Text = "Custom SWF:";
+            // 
+            // chkUseCustomSwf
+            // 
+            this.chkUseCustomSwf.AutoSize = true;
+            this.chkUseCustomSwf.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkUseCustomSwf.Location = new System.Drawing.Point(184, 100);
+            this.chkUseCustomSwf.Name = "chkUseCustomSwf";
+            this.chkUseCustomSwf.Size = new System.Drawing.Size(68, 17);
+            this.chkUseCustomSwf.TabIndex = 20;
+            this.chkUseCustomSwf.Text = "Enabled:";
+            this.chkUseCustomSwf.UseVisualStyleBackColor = true;
+            this.chkUseCustomSwf.CheckedChanged += new System.EventHandler(this.chkUseCustomSwf_CheckedChanged);
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(286, 380);
+            this.ClientSize = new System.Drawing.Size(261, 433);
+            this.Controls.Add(this.chkUseCustomSwf);
+            this.Controls.Add(this.lblCustomSwf);
+            this.Controls.Add(this.txtCustomSwfFlash);
             this.Controls.Add(this.chkIgnoreUpdateFlash);
             this.Controls.Add(this.chkIgnoreUpdateUnity);
             this.Controls.Add(this.chkIgnoreUpdateHabbox);
             this.Controls.Add(this.chkIgnoreUpdateShockwave);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblIgnoreUpdatesFor);
             this.Controls.Add(this.btnGEarthOriginsBrowse);
             this.Controls.Add(this.txtGEarthOriginsPath);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblGEarthOriginsPath);
             this.Controls.Add(this.chkOriginsXL);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDefaultOriginsServer);
             this.Controls.Add(this.defaultOriginsServer);
             this.Controls.Add(this.chkIgnoreClientUpdates);
             this.Controls.Add(this.btnSave);
@@ -316,15 +336,18 @@ namespace HabboLauncher
         private System.Windows.Forms.OpenFileDialog ofd;
         private System.Windows.Forms.CheckBox chkIgnoreClientUpdates;
         private System.Windows.Forms.ComboBox defaultOriginsServer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDefaultOriginsServer;
         private System.Windows.Forms.CheckBox chkOriginsXL;
         private System.Windows.Forms.Button btnGEarthOriginsBrowse;
         private System.Windows.Forms.TextBox txtGEarthOriginsPath;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblGEarthOriginsPath;
+        private System.Windows.Forms.Label lblIgnoreUpdatesFor;
         private System.Windows.Forms.CheckBox chkIgnoreUpdateShockwave;
         private System.Windows.Forms.CheckBox chkIgnoreUpdateHabbox;
         private System.Windows.Forms.CheckBox chkIgnoreUpdateUnity;
         private System.Windows.Forms.CheckBox chkIgnoreUpdateFlash;
+        private System.Windows.Forms.TextBox txtCustomSwfFlash;
+        private System.Windows.Forms.Label lblCustomSwf;
+        private System.Windows.Forms.CheckBox chkUseCustomSwf;
     }
 }

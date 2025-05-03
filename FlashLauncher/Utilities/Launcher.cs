@@ -28,6 +28,29 @@ namespace HabboLauncher
             doc.Save(appXmlPath);
         }
 
+        public static void ChangeFlashSwf()
+        {
+            var extractedPath = Path.Combine(Program.AppCacheDir, "downloads", "air", Program.Updater.lastCheckData.FlashWindowsVersion);
+            var swfPath = Path.Combine(extractedPath, "HabboAir.swf");
+            var backupSwfFile = Path.Combine(extractedPath, "HabboAir.original.swf");
+            var customSwfFile = Path.Combine(extractedPath, "HabboAir.custom.swf");
+
+            if (!Program.Settings.UseCustomSwf)
+            {
+                if (File.Exists(backupSwfFile))
+                {
+                    File.Copy(backupSwfFile, swfPath, true);
+                }
+                return;
+            }
+
+            if (File.Exists(customSwfFile))
+            {
+                File.Copy(customSwfFile, swfPath, true);
+            }
+            
+        }
+
         public static void LaunchFlashClient(string server, string ticket, bool withGEarth = true)
         {
             SetFlashApplicationId(ticket);

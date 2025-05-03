@@ -5,6 +5,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HabboLauncher
@@ -12,7 +15,7 @@ namespace HabboLauncher
     public class Updater
     {
         private Versions versionCache;
-        private ClientUrls lastCheckData;
+        public ClientUrls lastCheckData;
         private ClientUrls lastCheckDataHabbox;
         private ClientUrls lastCheckDataShockwave;
         private readonly WebClient webClient = new();
@@ -82,6 +85,14 @@ namespace HabboLauncher
                 Path.Combine(Program.AppCacheDir, "downloads", "air", "HabboWin.zip"),
                 extractedPath);
 
+            var swfPath = Path.Combine(extractedPath, "HabboAir.swf");
+            var backupSwfFile = Path.Combine(extractedPath, "HabboAir.original.swf");
+
+            if (File.Exists(swfPath))
+            {
+                File.Copy(swfPath, backupSwfFile);
+            }
+
             versionCache.Installations.Add(new Installation
             {
                 Version = lastCheckData.FlashWindowsVersion,
@@ -96,7 +107,19 @@ namespace HabboLauncher
                 Path = extractedPath
             };
 
+            if(!string.IsNullOrWhiteSpace(Program.Settings.CustomSWFLink))
+            {
+                var customSwfPath = Path.Combine(Program.AppCacheDir, "HabboAir.custom.swf");
+                var newInstallationPath = Path.Combine(extractedPath, "HabboAir.custom.swf");
+                if (File.Exists(customSwfPath))
+                {
+                    File.Copy(customSwfPath, newInstallationPath);
+                }
+            }
+
             SaveVersionCache();
+
+
         }
 
         public void DownloadUnityClient()
@@ -185,6 +208,89 @@ namespace HabboLauncher
             Directory.CreateDirectory(extractedPath);
             ZipFile.ExtractToDirectory(outputFile, extractedPath);
             File.Delete(outputFile);
+        }
+
+        public async Task DownloadCustomSWF(string swfLink)
+        {
+            var latestInstallationPath = Path.Combine(Program.AppCacheDir, "downloads", "air", lastCheckData.FlashWindowsVersion);
+            var swfFilePath = Path.Combine(Program.AppCacheDir, "HabboAir.custom.swf");
+
+            try
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    await webClient.DownloadFileTaskAsync(swfLink, swfFilePath);
+                }
+
+                if(File.Exists(swfFilePath)) 
+                    File.Copy(swfFilePath, Path.Combine(latestInstallationPath, "HabboAir.custom.swf"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error Downloading SWF: {ex.Message}");
+            }
+        }
+
+        public async Task CheckForSwfUpdates()
+        {
+            var swfLink = Program.Settings.CustomSWFLink;
+
+            var extractedPath = Path.Combine(Program.AppCacheDir, "downloads", "air", Program.Updater.lastCheckData.FlashWindowsVersion);
+            var customSwfFile = Path.Combine(extractedPath, "HabboAir.custom.swf");
+
+            try
+            {
+                string localFileHash = ComputeFileHash(customSwfFile);
+
+                string remoteFileHash = await GetFileHashFromUrl(swfLink);
+
+                if (localFileHash != remoteFileHash)
+                {
+                    DialogResult result = MessageBox.Show(
+                        $"A new update was found for your Custom SWF \n\n{Program.Settings.CustomSWFLink}\n\nDo you want to download it? (AT YOUR OWN RISK)",
+                        "SWF Update",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        await DownloadCustomSWF(swfLink);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while checking for SWF updates: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public string ComputeFileHash(string filePath)
+        {
+            if (!File.Exists(filePath))
+                return null;
+
+            using (var sha256 = SHA256.Create())
+            {
+                using (var stream = File.OpenRead(filePath))
+                {
+                    byte[] hash = sha256.ComputeHash(stream);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant(); 
+                }
+            }
+        }
+
+        public async Task<string> GetFileHashFromUrl(string url)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                byte[] fileBytes = await httpClient.GetByteArrayAsync(url);
+                using (var sha256 = SHA256.Create())
+                {
+                    byte[] hash = sha256.ComputeHash(fileBytes);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+                }
+            }
         }
 
         private string versionsPath = Path.Combine(Program.AppCacheDir, "versions.json");
