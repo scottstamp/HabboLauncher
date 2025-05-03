@@ -52,7 +52,7 @@ namespace HabboLauncher
             // 
             this.chkAutoLaunch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkAutoLaunch.AutoSize = true;
-            this.chkAutoLaunch.Location = new System.Drawing.Point(26, 289);
+            this.chkAutoLaunch.Location = new System.Drawing.Point(9, 270);
             this.chkAutoLaunch.Name = "chkAutoLaunch";
             this.chkAutoLaunch.Size = new System.Drawing.Size(92, 17);
             this.chkAutoLaunch.TabIndex = 2;
@@ -62,7 +62,7 @@ namespace HabboLauncher
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(29, 24);
+            this.txtCode.Location = new System.Drawing.Point(12, 12);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(312, 20);
             this.txtCode.TabIndex = 3;
@@ -71,7 +71,7 @@ namespace HabboLauncher
             // btnOptions
             // 
             this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOptions.Location = new System.Drawing.Point(397, 286);
+            this.btnOptions.Location = new System.Drawing.Point(361, 286);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(75, 21);
             this.btnOptions.TabIndex = 5;
@@ -84,7 +84,7 @@ namespace HabboLauncher
             this.btnLaunchFlash.Enabled = false;
             this.btnLaunchFlash.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchFlash.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchFlash.Image")));
-            this.btnLaunchFlash.Location = new System.Drawing.Point(29, 60);
+            this.btnLaunchFlash.Location = new System.Drawing.Point(12, 48);
             this.btnLaunchFlash.Name = "btnLaunchFlash";
             this.btnLaunchFlash.Size = new System.Drawing.Size(153, 100);
             this.btnLaunchFlash.TabIndex = 0;
@@ -95,7 +95,7 @@ namespace HabboLauncher
             // 
             this.chkLaunchGearth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkLaunchGearth.AutoSize = true;
-            this.chkLaunchGearth.Location = new System.Drawing.Point(124, 289);
+            this.chkLaunchGearth.Location = new System.Drawing.Point(107, 270);
             this.chkLaunchGearth.Name = "chkLaunchGearth";
             this.chkLaunchGearth.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkLaunchGearth.Size = new System.Drawing.Size(101, 17);
@@ -109,7 +109,7 @@ namespace HabboLauncher
             this.btnLaunchHabbox.BackColor = System.Drawing.Color.Transparent;
             this.btnLaunchHabbox.Enabled = false;
             this.btnLaunchHabbox.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchHabbox.Image")));
-            this.btnLaunchHabbox.Location = new System.Drawing.Point(188, 166);
+            this.btnLaunchHabbox.Location = new System.Drawing.Point(171, 154);
             this.btnLaunchHabbox.Name = "btnLaunchHabbox";
             this.btnLaunchHabbox.Size = new System.Drawing.Size(153, 100);
             this.btnLaunchHabbox.TabIndex = 11;
@@ -120,7 +120,7 @@ namespace HabboLauncher
             // 
             this.btnLaunchOriginsUS.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchOriginsUS.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchOriginsUS.Image")));
-            this.btnLaunchOriginsUS.Location = new System.Drawing.Point(29, 196);
+            this.btnLaunchOriginsUS.Location = new System.Drawing.Point(12, 184);
             this.btnLaunchOriginsUS.Name = "btnLaunchOriginsUS";
             this.btnLaunchOriginsUS.Size = new System.Drawing.Size(48, 40);
             this.btnLaunchOriginsUS.TabIndex = 12;
@@ -131,7 +131,7 @@ namespace HabboLauncher
             // 
             this.btnLaunchOriginsBR.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchOriginsBR.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchOriginsBR.Image")));
-            this.btnLaunchOriginsBR.Location = new System.Drawing.Point(83, 196);
+            this.btnLaunchOriginsBR.Location = new System.Drawing.Point(66, 184);
             this.btnLaunchOriginsBR.Name = "btnLaunchOriginsBR";
             this.btnLaunchOriginsBR.Size = new System.Drawing.Size(48, 40);
             this.btnLaunchOriginsBR.TabIndex = 13;
@@ -142,7 +142,7 @@ namespace HabboLauncher
             // 
             this.btnLaunchOriginsES.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchOriginsES.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchOriginsES.Image")));
-            this.btnLaunchOriginsES.Location = new System.Drawing.Point(134, 196);
+            this.btnLaunchOriginsES.Location = new System.Drawing.Point(117, 184);
             this.btnLaunchOriginsES.Name = "btnLaunchOriginsES";
             this.btnLaunchOriginsES.Size = new System.Drawing.Size(48, 40);
             this.btnLaunchOriginsES.TabIndex = 14;
@@ -155,7 +155,7 @@ namespace HabboLauncher
             this.btnLaunchHabboOrigins.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLaunchHabboOrigins.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchHabboOrigins.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchHabboOrigins.Image")));
-            this.btnLaunchHabboOrigins.Location = new System.Drawing.Point(29, 166);
+            this.btnLaunchHabboOrigins.Location = new System.Drawing.Point(12, 154);
             this.btnLaunchHabboOrigins.Name = "btnLaunchHabboOrigins";
             this.btnLaunchHabboOrigins.Size = new System.Drawing.Size(153, 100);
             this.btnLaunchHabboOrigins.TabIndex = 10;
@@ -168,7 +168,7 @@ namespace HabboLauncher
             this.btnLaunchUnity.Enabled = false;
             this.btnLaunchUnity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLaunchUnity.Image = ((System.Drawing.Image)(resources.GetObject("btnLaunchUnity.Image")));
-            this.btnLaunchUnity.Location = new System.Drawing.Point(188, 60);
+            this.btnLaunchUnity.Location = new System.Drawing.Point(171, 48);
             this.btnLaunchUnity.Name = "btnLaunchUnity";
             this.btnLaunchUnity.Size = new System.Drawing.Size(153, 100);
             this.btnLaunchUnity.TabIndex = 9;
@@ -182,7 +182,7 @@ namespace HabboLauncher
             this.tssOptions});
             this.ssInfo.Location = new System.Drawing.Point(0, 314);
             this.ssInfo.Name = "ssInfo";
-            this.ssInfo.Size = new System.Drawing.Size(372, 22);
+            this.ssInfo.Size = new System.Drawing.Size(336, 22);
             this.ssInfo.SizingGrip = false;
             this.ssInfo.TabIndex = 4;
             // 
@@ -201,7 +201,7 @@ namespace HabboLauncher
             this.tssOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tssOptions.IsLink = true;
             this.tssOptions.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.tssOptions.Margin = new System.Windows.Forms.Padding(280, 3, 0, 2);
+            this.tssOptions.Margin = new System.Windows.Forms.Padding(250, 3, 0, 2);
             this.tssOptions.Name = "tssOptions";
             this.tssOptions.Size = new System.Drawing.Size(49, 17);
             this.tssOptions.Text = "Options";
@@ -211,7 +211,7 @@ namespace HabboLauncher
             // 
             this.chkUseCustomSwf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkUseCustomSwf.AutoSize = true;
-            this.chkUseCustomSwf.Location = new System.Drawing.Point(231, 289);
+            this.chkUseCustomSwf.Location = new System.Drawing.Point(214, 270);
             this.chkUseCustomSwf.Name = "chkUseCustomSwf";
             this.chkUseCustomSwf.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkUseCustomSwf.Size = new System.Drawing.Size(110, 17);
@@ -224,7 +224,7 @@ namespace HabboLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 336);
+            this.ClientSize = new System.Drawing.Size(336, 336);
             this.Controls.Add(this.chkUseCustomSwf);
             this.Controls.Add(this.ssInfo);
             this.Controls.Add(this.btnLaunchOriginsES);
