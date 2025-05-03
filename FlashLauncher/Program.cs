@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HabboLauncher
@@ -19,6 +21,7 @@ namespace HabboLauncher
         [STAThread]
         static void Main(string[] args)
         {
+
             CreateOriginalDirectories();
             
             Updater = new();
@@ -27,6 +30,14 @@ namespace HabboLauncher
             if (!CheckExecutingDirectory()) return;
             if (!Settings.IgnoreClientUpdates)
                 ShowUpdatePrompt(Updater.CheckForUpdate());
+
+            if(Settings.UseCustomSwf && !string.IsNullOrWhiteSpace(Settings.CustomSWFLink))
+            {
+                Task.Run(async () =>
+                {
+                   await Updater.CheckForSwfUpdates();
+                });
+            }
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -37,6 +48,22 @@ namespace HabboLauncher
         {
             if (!Directory.Exists(AppDir)) Directory.CreateDirectory(AppDir);
             if (!Directory.Exists(AppCacheDir)) Directory.CreateDirectory(AppCacheDir);
+        }
+
+        public static void CopyDirectory(string sourceDir, string targetDir)
+        {
+            foreach (var dir in Directory.GetDirectories(sourceDir, "*", SearchOption.AllDirectories))
+            {
+                string relPath = dir.Substring(sourceDir.Length).TrimStart(Path.DirectorySeparatorChar);
+                Directory.CreateDirectory(Path.Combine(targetDir, relPath));
+            }
+
+            foreach (var file in Directory.GetFiles(sourceDir, "*.*", SearchOption.AllDirectories))
+            {
+                string relPath = file.Substring(sourceDir.Length).TrimStart(Path.DirectorySeparatorChar);
+                string destFile = Path.Combine(targetDir, relPath);
+                File.Copy(file, destFile, true);
+            }
         }
 
         static bool CheckExecutingDirectory()
@@ -71,7 +98,7 @@ namespace HabboLauncher
         {
             if (Settings.IgnoreClientUpdates && !result.Required) return;
 
-            if (result.FlashUpdate && result.UnityUpdate)
+            if (result.FlashUpdate && result.UnityUpdate && result.ShockwaveUpdate)
             {
                 var message = "Updates for the both client versions are available. Would you like to download them?";
 
@@ -80,14 +107,16 @@ namespace HabboLauncher
 
                 if (MessageBox.Show(message +
                     $"\r\n\r\nUnity: {Updater.LastCheckUnityUrl}" +
-                    $"\r\nFlash: {Updater.LastCheckFlashUrl}",
+                    $"\r\nFlash: {Updater.LastCheckFlashUrl}" +
+                    $"\r\n\r\nOrigins: {Updater.LastCheckShockwaveUrl}",
                     "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Updater.DownloadAirClient();
                     Updater.DownloadUnityClient();
+                    Updater.DownloadShockwaveClient();
                 }
             }
-            else if (result.FlashUpdate)
+            else if (result.FlashUpdate && !Settings.IgnoreClientUpdatesFlash)
             {
                 var message = "An update for the AIR (Classic) client is available. Would you like to download it?";
 
@@ -101,7 +130,7 @@ namespace HabboLauncher
                     Updater.DownloadAirClient();
                 }
             }
-            else if (result.UnityUpdate)
+            else if (result.UnityUpdate && !Settings.IgnoreClientUpdatesUnity)
             {
                 var message = "An update for the Unity (Modern) client is available. Would you like to download it?";
 
@@ -115,7 +144,21 @@ namespace HabboLauncher
                     Updater.DownloadUnityClient();
                 }
             }
-            else if (result.HabboxUpdate)
+            else if (result.ShockwaveUpdate && !Settings.IgnoreClientUpdatesOrigins)
+            {
+                var message = "An update for the Origins client is available. Would you like to download it?";
+
+                if (result.Required)
+                    message = "Existing client files were not found, please click yes to download client files and continue.";
+
+                if (MessageBox.Show(message +
+                    $"\r\n\r\nOrigins: {Updater.LastCheckShockwaveUrl}",
+                    "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Updater.DownloadShockwaveClient();
+                }
+            }
+            else if (result.HabboxUpdate && !Settings.IgnoreClientUpdatesHabbox)
             {
                 var message = "An update for the Habbo X (Modern) client is available. Would you like to download it?";
 

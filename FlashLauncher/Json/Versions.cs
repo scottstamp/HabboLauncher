@@ -24,6 +24,7 @@ namespace HabboLauncher.Json
         public CheckInfo Habbox { get; set; }
         public CheckInfo Unity { get; set; }
         public CheckInfo Air { get; set; }
+        public CheckInfo Shockwave { get; set; }
         public long Time { get; set; }
     }
 

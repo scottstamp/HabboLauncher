@@ -1,23 +1,39 @@
 ﻿using HabboLauncher.Utilities;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HabboLauncher
 {
     public partial class MainFrm : Form
     {
         private readonly Regex tokenRe = new Regex(@"^([\w]+)\.([\w-]+\.V4)");
+        private const string txtCodePlaceholder = "Login Code";
         private string server = "", ticket = "";
         private SelfUpdater SelfUpdater;
         private bool closing = false;
 
+
+
         public MainFrm(string[] args)
         {
             InitializeComponent();
+            btnLaunchOriginsBR.Hide();
+            btnLaunchOriginsES.Hide();
+            btnLaunchOriginsUS.Hide();
+
+            txtCode.Text = txtCodePlaceholder;
+            txtCode.ForeColor = Color.Gray;
+
+            txtCode.GotFocus += RemovePlaceholder;
+            txtCode.LostFocus += SetPlaceholder;
+
             FormClosing += (s, e) => closing = true;
 
             if (args.Length == 1)
@@ -241,11 +257,119 @@ namespace HabboLauncher
             Program.Settings.SaveSettings();
         }
 
+        private void btnLaunchHabboOrigins_Click(object sender, EventArgs e)
+        {
+
+            if (Program.Settings.DefaultOriginsServer == 0)
+            {
+                btnLaunchHabboOrigins.Hide();
+                btnLaunchOriginsBR.Show();
+                btnLaunchOriginsES.Show();
+                btnLaunchOriginsUS.Show();
+                return;
+            }
+
+            if(Program.Settings.DefaultOriginsServer == 1)
+            {
+                launchOriginsClient("us");
+            }
+
+            if (Program.Settings.DefaultOriginsServer == 2)
+            {
+                launchOriginsClient("br");
+            }
+
+            if (Program.Settings.DefaultOriginsServer == 3)
+            {
+                launchOriginsClient("es");
+            }
+
+        }
+
+        private void launchOriginsClient(string server)
+        {
+            try
+            {
+                Program.Settings.LastLaunched = "shockwave";
+                Program.Settings.SaveSettings();
+
+                Task.Run(() =>
+                {
+                    Launcher.LaunchOriginsClient(server, Program.Settings.LaunchGEarth, Program.Settings.OriginsXL);
+
+                    Invoke((MethodInvoker)delegate
+                    {
+                        Close();
+                    });
+                });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        private void btnLaunchOriginsUS_Click(object sender, EventArgs e)
+        {
+            Program.Settings.DefaultOriginsServer = 1;
+            launchOriginsClient("us");
+        }
+
+        private void btnLaunchOriginsBR_Click(object sender, EventArgs e)
+        {
+            Program.Settings.DefaultOriginsServer = 2;
+            launchOriginsClient("br");
+        }
+
+        private void btnLaunchOriginsES_Click(object sender, EventArgs e)
+        {
+            Program.Settings.DefaultOriginsServer = 3;
+            launchOriginsClient("es");
+        }
+
         private void MainFrm_Load(object sender, EventArgs e)
         {
             SelfUpdater = new SelfUpdater(this);
             chkLaunchGearth.Checked = Program.Settings.LaunchGEarth;
+            chkUseCustomSwf.Checked = Program.Settings.UseCustomSwf;
             HandleAutoLaunch();
+        }
+
+        private void chkUseCustomSwf_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.Settings.UseCustomSwf = chkUseCustomSwf.Checked;
+
+            Task.Run(() =>
+            {
+                Launcher.ChangeFlashSwf();
+            });
+        }
+
+        public void validateSettings(bool launchGearth, bool useCustomSwf)
+        {
+            chkLaunchGearth.Checked = launchGearth;
+            chkUseCustomSwf.Checked = useCustomSwf;
+        }
+
+        private void RemovePlaceholder(object sender, EventArgs e)
+        {
+            if (txtCode.Text == txtCodePlaceholder)
+            {
+                txtCode.Text = "";
+                txtCode.ForeColor = Color.Black;
+            }
+
+        }
+
+        private void SetPlaceholder(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCode.Text))
+            {
+                txtCode.Text = txtCodePlaceholder;
+                txtCode.ForeColor = Color.Gray;
+            }
         }
     }
 }
