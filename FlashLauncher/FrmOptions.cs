@@ -116,6 +116,12 @@ namespace HabboLauncher
             if (txtCustomSwfFlash.Text == Program.Settings.CustomSWFLink)
                 return;
 
+            if (!Uri.TryCreate(txtCustomSwfFlash.Text, UriKind.Absolute, out Uri uriResult) ||
+                (uriResult.Scheme != Uri.UriSchemeHttp && uriResult.Scheme != Uri.UriSchemeHttps))
+            {
+                return;
+            }
+
             DialogResult result = MessageBox.Show(
                 "Please ensure that you only use trusted SWF files.\n\n" +
                 "Running unverified or modified SWF files can pose serious security risks, including the execution of malicious code on your computer.\n\n" +
