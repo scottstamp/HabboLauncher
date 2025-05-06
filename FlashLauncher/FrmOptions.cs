@@ -13,6 +13,9 @@ namespace HabboLauncher
 {
     public partial class FrmOptions : Form
     {
+
+        private bool _isHandlingSwfLeave = false;
+
         public FrmOptions()
         {
             InitializeComponent();
@@ -76,17 +79,16 @@ namespace HabboLauncher
             Program.Settings.DefaultOriginsServer = defaultOriginsServer.SelectedIndex;
             Program.Settings.GEarthPath = txtGEarthPath.Text;
             Program.Settings.GEarthOriginsPath = txtGEarthOriginsPath.Text;
-            Program.Settings.CustomSWFLink = txtCustomSwfFlash.Text;
-            Program.Settings.UseCustomSwf = chkUseCustomSwf.Checked;
             Program.Settings.OriginsXL = chkOriginsXL.Checked;
             Program.Settings.LaunchGEarth = chkLaunchGEarth.Checked;
             Program.Settings.IgnoreClientUpdates = chkIgnoreClientUpdates.Checked;
             Program.Settings.IgnoreClientUpdatesFlash = chkIgnoreUpdateFlash.Checked; 
             Program.Settings.IgnoreClientUpdatesHabbox = chkIgnoreUpdateHabbox.Checked;
             Program.Settings.IgnoreClientUpdatesOrigins = chkIgnoreUpdateShockwave.Checked;
-            Program.Settings.IgnoreClientUpdatesUnity = chkIgnoreUpdateUnity.Checked;
-            
+            Program.Settings.IgnoreClientUpdatesUnity = chkIgnoreUpdateUnity.Checked;            
             Program.Settings.AutoLaunchDelay = (int)numAutoLaunchDelay.Value;
+            Program.Settings.CustomSWFLink = txtCustomSwfFlash.Text;
+            Program.Settings.UseCustomSwf = chkUseCustomSwf.Checked;
 
             Program.Settings.SaveSettings();
 
@@ -110,6 +112,68 @@ namespace HabboLauncher
 
         private async void txtCustomSwfFlash_Leave(object sender, EventArgs e)
         {
+            if (_isHandlingSwfLeave)
+                return;
+
+            _isHandlingSwfLeave = true;
+
+            try
+            {
+                if (string.IsNullOrEmpty(txtCustomSwfFlash.Text))
+                    return;
+
+                if (txtCustomSwfFlash.Text == Program.Settings.CustomSWFLink)
+                    return;
+
+                if (!Uri.TryCreate(txtCustomSwfFlash.Text, UriKind.Absolute, out Uri uriResult) ||
+                    (uriResult.Scheme != Uri.UriSchemeHttp && uriResult.Scheme != Uri.UriSchemeHttps))
+                {
+                    return;
+                }
+
+                chkUseCustomSwf.Checked = false;
+                Program.Settings.UseCustomSwf = false;
+
+                DialogResult result = MessageBox.Show(
+                    "Please ensure that you only use trusted SWF files.\n\n" +
+                    "Running unverified or modified SWF files can pose serious security risks, including the execution of malicious code on your computer.\n\n" +
+                    "Use this feature with caution. We are not responsible for any damage or misuse resulting from custom SWF files.\n\nBy pressing OK, this program will download the file from the Link you typed",
+                    "HabboLauncher ~ Alert",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning
+                );
+
+                if (result == DialogResult.OK)
+                {
+                    btnSave.Enabled = false;
+                    try
+                    {
+                        await Program.Updater.DownloadCustomSWF(txtCustomSwfFlash.Text);
+                        chkUseCustomSwf.Checked = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            $"An error occurred while downloading the file: {ex.Message}\n\n" +
+                            "Make sure you are using a downloadable link to the SWF.\n\n" +
+                            "For instance:\n" +
+                            "https://github.com/LilithRainbows/HabboAirPlus/raw/refs/heads/main/HabboAir.swf",
+                            "HabboLauncher ~ Download Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
+                    btnSave.Enabled = true;
+                }
+            }
+            finally
+            {
+                _isHandlingSwfLeave = false;
+            }
+        }
+
+        private void chkUseCustomSwf_CheckedChanged(object sender, EventArgs e)
+        {
             if (string.IsNullOrWhiteSpace(txtCustomSwfFlash.Text))
                 return;
 
@@ -122,40 +186,6 @@ namespace HabboLauncher
                 return;
             }
 
-            DialogResult result = MessageBox.Show(
-                "Please ensure that you only use trusted SWF files.\n\n" +
-                "Running unverified or modified SWF files can pose serious security risks, including the execution of malicious code on your computer.\n\n" +
-                "Use this feature with caution. We are not responsible for any damage or misuse resulting from custom SWF files.\n\nBy pressing OK, this program will download the file from the Link you typed",
-                "HabboLauncher ~ Alert",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.OK)
-            {
-                btnSave.Enabled = false;
-                try
-                {
-                    await Program.Updater.DownloadCustomSWF(txtCustomSwfFlash.Text);
-                    chkUseCustomSwf.Checked = true;
-                }catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        $"An error occurred while downloading the file: {ex.Message}\n\n" +
-                        "Make sure you are using a downloadable link to the SWF.\n\n" +
-                        "For instance:\n" +
-                        "https://github.com/LilithRainbows/HabboAirPlus/raw/refs/heads/main/HabboAir.swf",
-                        "HabboLauncher ~ Download Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
-                btnSave.Enabled = true;
-            }
-        }
-
-        private void chkUseCustomSwf_CheckedChanged(object sender, EventArgs e)
-        {
             Program.Settings.UseCustomSwf = chkUseCustomSwf.Checked;
 
             Task.Run(() =>
