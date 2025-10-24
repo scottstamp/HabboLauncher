@@ -35,6 +35,10 @@ namespace HabboLauncher
             txtCustomSwfFlash.Text = Program.Settings.CustomSWFLink;
             chkUseCustomSwf.Checked = Program.Settings.UseCustomSwf;
             numAutoLaunchDelay.Value = Program.Settings.AutoLaunchDelay;
+
+            // Wire up mutual exclusivity between XL and IntegerScaler
+            chkOriginsXL.CheckedChanged += chkOriginsXL_CheckedChanged;
+            chkLaunchIntegerScaler.CheckedChanged += chkLaunchIntegerScaler_CheckedChanged_Mutual;
         }
 
         protected override CreateParams CreateParams
@@ -200,6 +204,26 @@ namespace HabboLauncher
         {
             Program.Settings.LaunchIntegerScaler = chkLaunchIntegerScaler.Checked;
             Program.Settings.SaveSettings();
+        }
+
+        private void chkOriginsXL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkOriginsXL.Checked && chkLaunchIntegerScaler.Checked)
+            {
+                chkLaunchIntegerScaler.CheckedChanged -= chkLaunchIntegerScaler_CheckedChanged_Mutual;
+                chkLaunchIntegerScaler.Checked = false;
+                chkLaunchIntegerScaler.CheckedChanged += chkLaunchIntegerScaler_CheckedChanged_Mutual;
+            }
+        }
+
+        private void chkLaunchIntegerScaler_CheckedChanged_Mutual(object sender, EventArgs e)
+        {
+            if (chkLaunchIntegerScaler.Checked && chkOriginsXL.Checked)
+            {
+                chkOriginsXL.CheckedChanged -= chkOriginsXL_CheckedChanged;
+                chkOriginsXL.Checked = false;
+                chkOriginsXL.CheckedChanged += chkOriginsXL_CheckedChanged;
+            }
         }
 
 
