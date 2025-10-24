@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HabboLauncher.Utilities;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -91,8 +92,25 @@ namespace HabboLauncher
             });
         }
 
-        public static void LaunchOriginsClient(string server, bool withGEarth = true, bool isXl = false)
+        public static void LaunchOriginsClient(string server, bool withGEarth = true, bool isXl = false, bool withIntegerScaler = false)
         {
+            if (withIntegerScaler)
+            {
+                try
+                {
+                    // Only launch if not already running
+                    if (!IntegerScalerManager.IsIntegerScalerRunning())
+                    {
+                        IntegerScalerManager.LaunchIntegerScaler();
+                        Task.Delay(1000).Wait();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to launch IntegerScaler: {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
             if (withGEarth && File.Exists(Program.Settings.GEarthOriginsPath))
             {
                 Process.Start(new ProcessStartInfo(Path.GetFileName(Program.Settings.GEarthOriginsPath))

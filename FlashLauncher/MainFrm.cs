@@ -295,7 +295,7 @@ namespace HabboLauncher
 
                 Task.Run(() =>
                 {
-                    Launcher.LaunchOriginsClient(server, Program.Settings.LaunchGEarth, Program.Settings.OriginsXL);
+                    Launcher.LaunchOriginsClient(server, Program.Settings.LaunchGEarth, Program.Settings.OriginsXL, Program.Settings.LaunchIntegerScaler);
 
                     Invoke((MethodInvoker)delegate
                     {

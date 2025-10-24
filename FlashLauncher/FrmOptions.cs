@@ -31,6 +31,7 @@ namespace HabboLauncher
             chkOriginsXL.Checked = Program.Settings.OriginsXL;
             defaultOriginsServer.SelectedIndex = Program.Settings.DefaultOriginsServer;
             txtGEarthOriginsPath.Text = Program.Settings.GEarthOriginsPath;
+            chkLaunchIntegerScaler.Checked = Program.Settings.LaunchIntegerScaler;
             txtCustomSwfFlash.Text = Program.Settings.CustomSWFLink;
             chkUseCustomSwf.Checked = Program.Settings.UseCustomSwf;
             numAutoLaunchDelay.Value = Program.Settings.AutoLaunchDelay;
@@ -80,6 +81,7 @@ namespace HabboLauncher
             Program.Settings.GEarthPath = txtGEarthPath.Text;
             Program.Settings.GEarthOriginsPath = txtGEarthOriginsPath.Text;
             Program.Settings.OriginsXL = chkOriginsXL.Checked;
+            Program.Settings.LaunchIntegerScaler = chkLaunchIntegerScaler.Checked;
             Program.Settings.LaunchGEarth = chkLaunchGEarth.Checked;
             Program.Settings.IgnoreClientUpdates = chkIgnoreClientUpdates.Checked;
             Program.Settings.IgnoreClientUpdatesFlash = chkIgnoreUpdateFlash.Checked; 
@@ -193,5 +195,13 @@ namespace HabboLauncher
                 Launcher.ChangeFlashSwf();
             });
         }
+
+        private void chkLaunchIntegerScaler_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.Settings.LaunchIntegerScaler = chkLaunchIntegerScaler.Checked;
+            Program.Settings.SaveSettings();
+        }
+
+
     }
 }

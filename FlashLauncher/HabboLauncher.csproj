@@ -243,6 +243,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\IntegerScalerManager.cs" />
     <Compile Include="Utilities\RegUtil.cs" />
     <Compile Include="Utilities\SelfUpdater.cs" />
     <Compile Include="Utilities\Settings.cs" />
@@ -260,6 +261,8 @@
     <Content Include="Images\FlashLauncher.ico" />
     <None Include="Resources\btnLaunchHabbox.Image.bmp" />
     <None Include="Images\habbox.png" />
+    <EmbeddedResource Include="Resources\IntegerScaler_x64.exe" />
+    <EmbeddedResource Include="Resources\IntegerScaler_x86.exe" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

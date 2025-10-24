@@ -97,79 +97,30 @@ namespace HabboLauncher
         {
             if (Settings.IgnoreClientUpdates && !result.Required) return;
 
-            if (result.FlashUpdate && result.UnityUpdate && result.ShockwaveUpdate)
+            bool needFlash = result.FlashUpdate && (!Settings.IgnoreClientUpdatesFlash || result.Required);
+            bool needUnity = result.UnityUpdate && (!Settings.IgnoreClientUpdatesUnity || result.Required);
+            bool needHabbox = result.HabboxUpdate && (!Settings.IgnoreClientUpdatesHabbox || result.Required);
+            bool needShockwave = result.ShockwaveUpdate && (!Settings.IgnoreClientUpdatesOrigins || result.Required);
+
+            if (!needFlash && !needUnity && !needHabbox && !needShockwave)
+                return;
+
+            var message = result.Required 
+                ? "Existing client files were not found, please click yes to download client files and continue."
+                : "Updates are available for the following clients. Would you like to download them?";
+
+            var details = "";
+            if (needFlash) details += $"\r\n\r\nFlash (AIR): {Updater.LastCheckFlashUrl}";
+            if (needUnity) details += $"\r\n\r\nUnity: {Updater.LastCheckUnityUrl}";
+            if (needHabbox) details += $"\r\n\r\nHabbox: {Updater.LastCheckHabboxUrl}";
+            if (needShockwave) details += $"\r\n\r\nOrigins: {Updater.LastCheckShockwaveUrl}";
+
+            if (MessageBox.Show(message + details, "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                var message = "Updates for the both client versions and Origins are available. Would you like to download them?";
-
-                if (result.Required)
-                    message = "Existing client files were not found, please click yes to download client files and continue.";
-
-                if (MessageBox.Show(message +
-                    $"\r\n\r\nUnity: {Updater.LastCheckUnityUrl}" +
-                    $"\r\nFlash: {Updater.LastCheckFlashUrl}" +
-                    $"\r\n\r\nOrigins: {Updater.LastCheckShockwaveUrl}",
-                    "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    Updater.DownloadAirClient();
-                    Updater.DownloadUnityClient();
-                    Updater.DownloadShockwaveClient();
-                }
-            }
-            else if (result.FlashUpdate && !Settings.IgnoreClientUpdatesFlash)
-            {
-                var message = "An update for the AIR (Classic) client is available. Would you like to download it?";
-
-                if (result.Required)
-                    message = "Existing client files were not found, please click yes to download client files and continue.";
-
-                if (MessageBox.Show(message +
-                    $"\r\n\r\nFlash: {Updater.LastCheckFlashUrl}",
-                    "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    Updater.DownloadAirClient();
-                }
-            }
-            else if (result.UnityUpdate && !Settings.IgnoreClientUpdatesUnity)
-            {
-                var message = "An update for the Unity (Modern) client is available. Would you like to download it?";
-
-                if (result.Required)
-                    message = "Existing client files were not found, please click yes to download client files and continue.";
-
-                if (MessageBox.Show(message +
-                    $"\r\n\r\nUnity: {Updater.LastCheckUnityUrl}",
-                    "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    Updater.DownloadUnityClient();
-                }
-            }
-            else if (result.ShockwaveUpdate && !Settings.IgnoreClientUpdatesOrigins)
-            {
-                var message = "An update for the Origins client is available. Would you like to download it?";
-
-                if (result.Required)
-                    message = "Existing client files were not found, please click yes to download client files and continue.";
-
-                if (MessageBox.Show(message +
-                    $"\r\n\r\nOrigins: {Updater.LastCheckShockwaveUrl}",
-                    "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    Updater.DownloadShockwaveClient();
-                }
-            }
-            else if (result.HabboxUpdate && !Settings.IgnoreClientUpdatesHabbox)
-            {
-                var message = "An update for the Habbo X (Modern) client is available. Would you like to download it?";
-
-                if (result.Required)
-                    message = "Existing client files were not found, please click yes to download client files and continue.";
-
-                if (MessageBox.Show(message +
-                    $"\r\n\r\nHabbox: {Updater.LastCheckHabboxUrl}",
-                    "HabboLauncher ~ Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    Updater.DownloadHabboxClient();
-                }
+                if (needFlash) Updater.DownloadAirClient();
+                if (needUnity) Updater.DownloadUnityClient();
+                if (needHabbox) Updater.DownloadHabboxClient();
+                if (needShockwave) Updater.DownloadShockwaveClient();
             }
         }
     }
