@@ -94,6 +94,9 @@ namespace HabboLauncher
 
         public static void LaunchOriginsClient(string server, bool withGEarth = true, bool isXl = false, bool withIntegerScaler = false)
         {
+            // Clean up old shockwave-habbo temp folders before creating a new one
+            CleanupOldOriginsTempFolders();
+
             if (withIntegerScaler)
             {
                 try
@@ -151,6 +154,80 @@ namespace HabboLauncher
             else
             {
                 MessageBox.Show($"Executable not found in temp folder: {exePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Cleans up old shockwave-habbo temp folders that are not in use
+        /// </summary>
+        private static void CleanupOldOriginsTempFolders()
+        {
+            try
+            {
+                string tempPath = Path.GetTempPath();
+                string[] shockwaveTempDirs = Directory.GetDirectories(tempPath, "shockwave-habbo-*", SearchOption.TopDirectoryOnly);
+
+                foreach (string dir in shockwaveTempDirs)
+                {
+                    try
+                    {
+                        // Check if any process is using files in this directory
+                        if (!IsDirectoryInUse(dir))
+                        {
+                            Directory.Delete(dir, true);
+                        }
+                    }
+                    catch
+                    {
+                        // Ignore errors - folder might be in use or locked
+                    }
+                }
+            }
+            catch
+            {
+                // Ignore errors during cleanup - not critical
+            }
+        }
+
+        /// <summary>
+        /// Checks if any files in the directory are currently in use by a process
+        /// </summary>
+        private static bool IsDirectoryInUse(string directory)
+        {
+            try
+            {
+                // Try to get all executable files in the directory
+                string[] exeFiles = Directory.GetFiles(directory, "*.exe", SearchOption.TopDirectoryOnly);
+                
+                foreach (string exeFile in exeFiles)
+                {
+                    string exeName = Path.GetFileNameWithoutExtension(exeFile);
+                    
+                    // Check if any process with this name is running
+                    Process[] processes = Process.GetProcessesByName(exeName);
+                    foreach (Process proc in processes)
+                    {
+                        try
+                        {
+                            // Check if the process executable path matches this directory
+                            if (proc.MainModule?.FileName?.StartsWith(directory, StringComparison.OrdinalIgnoreCase) == true)
+                            {
+                                return true; // Directory is in use
+                            }
+                        }
+                        catch
+                        {
+                            // Access denied or process terminated - continue checking
+                        }
+                    }
+                }
+                
+                return false; // No processes found using this directory
+            }
+            catch
+            {
+                // If we can't determine, assume it's in use to be safe
+                return true;
             }
         }
 
