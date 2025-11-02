@@ -10,6 +10,7 @@ namespace HabboLauncher
         public bool LaunchGEarth { get; set; } = false;
         public string GEarthPath { get; set; } = @"";
         public string GEarthOriginsPath { get; set; } = @"";
+        public bool LaunchIntegerScaler { get; set; } = false;
         public string CustomSWFLink { get; set; } = @"";
         public bool UseCustomSwf { get; set; } = false;
         public bool IgnoreClientUpdates { get; set; } = false;

@@ -53,6 +53,7 @@ namespace HabboLauncher
             this.txtCustomSwfFlash = new System.Windows.Forms.TextBox();
             this.lblCustomSwf = new System.Windows.Forms.Label();
             this.chkUseCustomSwf = new System.Windows.Forms.CheckBox();
+            this.chkLaunchIntegerScaler = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numAutoLaunchDelay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +113,7 @@ namespace HabboLauncher
             // 
             this.chkLaunchGEarth.AutoSize = true;
             this.chkLaunchGEarth.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkLaunchGEarth.Location = new System.Drawing.Point(11, 271);
+            this.chkLaunchGEarth.Location = new System.Drawing.Point(11, 291);
             this.chkLaunchGEarth.Name = "chkLaunchGEarth";
             this.chkLaunchGEarth.Size = new System.Drawing.Size(104, 17);
             this.chkLaunchGEarth.TabIndex = 4;
@@ -137,7 +138,7 @@ namespace HabboLauncher
             // 
             this.chkIgnoreClientUpdates.AutoSize = true;
             this.chkIgnoreClientUpdates.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreClientUpdates.Location = new System.Drawing.Point(11, 294);
+            this.chkIgnoreClientUpdates.Location = new System.Drawing.Point(11, 314);
             this.chkIgnoreClientUpdates.Name = "chkIgnoreClientUpdates";
             this.chkIgnoreClientUpdates.Size = new System.Drawing.Size(145, 17);
             this.chkIgnoreClientUpdates.TabIndex = 6;
@@ -206,7 +207,7 @@ namespace HabboLauncher
             // lblIgnoreUpdatesFor
             // 
             this.lblIgnoreUpdatesFor.AutoSize = true;
-            this.lblIgnoreUpdatesFor.Location = new System.Drawing.Point(13, 322);
+            this.lblIgnoreUpdatesFor.Location = new System.Drawing.Point(12, 334);
             this.lblIgnoreUpdatesFor.Name = "lblIgnoreUpdatesFor";
             this.lblIgnoreUpdatesFor.Size = new System.Drawing.Size(98, 13);
             this.lblIgnoreUpdatesFor.TabIndex = 13;
@@ -216,7 +217,7 @@ namespace HabboLauncher
             // 
             this.chkIgnoreUpdateShockwave.AutoSize = true;
             this.chkIgnoreUpdateShockwave.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreUpdateShockwave.Location = new System.Drawing.Point(34, 344);
+            this.chkIgnoreUpdateShockwave.Location = new System.Drawing.Point(33, 356);
             this.chkIgnoreUpdateShockwave.Name = "chkIgnoreUpdateShockwave";
             this.chkIgnoreUpdateShockwave.Size = new System.Drawing.Size(58, 17);
             this.chkIgnoreUpdateShockwave.TabIndex = 14;
@@ -227,7 +228,7 @@ namespace HabboLauncher
             // 
             this.chkIgnoreUpdateHabbox.AutoSize = true;
             this.chkIgnoreUpdateHabbox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreUpdateHabbox.Location = new System.Drawing.Point(29, 361);
+            this.chkIgnoreUpdateHabbox.Location = new System.Drawing.Point(28, 373);
             this.chkIgnoreUpdateHabbox.Name = "chkIgnoreUpdateHabbox";
             this.chkIgnoreUpdateHabbox.Size = new System.Drawing.Size(63, 17);
             this.chkIgnoreUpdateHabbox.TabIndex = 15;
@@ -238,7 +239,7 @@ namespace HabboLauncher
             // 
             this.chkIgnoreUpdateUnity.AutoSize = true;
             this.chkIgnoreUpdateUnity.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreUpdateUnity.Location = new System.Drawing.Point(111, 344);
+            this.chkIgnoreUpdateUnity.Location = new System.Drawing.Point(110, 356);
             this.chkIgnoreUpdateUnity.Name = "chkIgnoreUpdateUnity";
             this.chkIgnoreUpdateUnity.Size = new System.Drawing.Size(50, 17);
             this.chkIgnoreUpdateUnity.TabIndex = 16;
@@ -249,7 +250,7 @@ namespace HabboLauncher
             // 
             this.chkIgnoreUpdateFlash.AutoSize = true;
             this.chkIgnoreUpdateFlash.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkIgnoreUpdateFlash.Location = new System.Drawing.Point(110, 361);
+            this.chkIgnoreUpdateFlash.Location = new System.Drawing.Point(109, 373);
             this.chkIgnoreUpdateFlash.Name = "chkIgnoreUpdateFlash";
             this.chkIgnoreUpdateFlash.Size = new System.Drawing.Size(51, 17);
             this.chkIgnoreUpdateFlash.TabIndex = 17;
@@ -285,11 +286,23 @@ namespace HabboLauncher
             this.chkUseCustomSwf.UseVisualStyleBackColor = true;
             this.chkUseCustomSwf.CheckedChanged += new System.EventHandler(this.chkUseCustomSwf_CheckedChanged);
             // 
+            // chkLaunchIntegerScaler
+            // 
+            this.chkLaunchIntegerScaler.AutoSize = true;
+            this.chkLaunchIntegerScaler.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkLaunchIntegerScaler.Location = new System.Drawing.Point(11, 268);
+            this.chkLaunchIntegerScaler.Name = "chkLaunchIntegerScaler";
+            this.chkLaunchIntegerScaler.Size = new System.Drawing.Size(92, 17);
+            this.chkLaunchIntegerScaler.TabIndex = 21;
+            this.chkLaunchIntegerScaler.Text = "Integer Scale:";
+            this.chkLaunchIntegerScaler.UseVisualStyleBackColor = true;
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 433);
+            this.Controls.Add(this.chkLaunchIntegerScaler);
             this.Controls.Add(this.chkUseCustomSwf);
             this.Controls.Add(this.lblCustomSwf);
             this.Controls.Add(this.txtCustomSwfFlash);
@@ -347,5 +360,6 @@ namespace HabboLauncher
         private System.Windows.Forms.TextBox txtCustomSwfFlash;
         private System.Windows.Forms.Label lblCustomSwf;
         private System.Windows.Forms.CheckBox chkUseCustomSwf;
+        private System.Windows.Forms.CheckBox chkLaunchIntegerScaler;
     }
 }

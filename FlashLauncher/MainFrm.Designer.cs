@@ -45,6 +45,7 @@ namespace HabboLauncher
             this.lblVersionLink = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssOptions = new System.Windows.Forms.ToolStripStatusLabel();
             this.chkUseCustomSwf = new System.Windows.Forms.CheckBox();
+            this.clearInstalls = new System.Windows.Forms.ToolStripStatusLabel();
             this.ssInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -180,6 +181,7 @@ namespace HabboLauncher
             // 
             this.ssInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblVersionLink,
+            this.clearInstalls,
             this.tssOptions});
             this.ssInfo.Location = new System.Drawing.Point(0, 277);
             this.ssInfo.Name = "ssInfo";
@@ -202,9 +204,9 @@ namespace HabboLauncher
             this.tssOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tssOptions.IsLink = true;
             this.tssOptions.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.tssOptions.Margin = new System.Windows.Forms.Padding(250, 3, 0, 2);
+            this.tssOptions.Margin = new System.Windows.Forms.Padding(0);
             this.tssOptions.Name = "tssOptions";
-            this.tssOptions.Size = new System.Drawing.Size(49, 17);
+            this.tssOptions.Size = new System.Drawing.Size(49, 22);
             this.tssOptions.Text = "Options";
             this.tssOptions.Click += new System.EventHandler(this.tssOptions_Click);
             // 
@@ -220,6 +222,16 @@ namespace HabboLauncher
             this.chkUseCustomSwf.Text = "Use Custom SWF";
             this.chkUseCustomSwf.UseVisualStyleBackColor = false;
             this.chkUseCustomSwf.CheckedChanged += new System.EventHandler(this.chkUseCustomSwf_CheckedChanged);
+            // 
+            // clearInstalls
+            // 
+            this.clearInstalls.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.clearInstalls.IsLink = true;
+            this.clearInstalls.Margin = new System.Windows.Forms.Padding(175, 3, 0, 2);
+            this.clearInstalls.Name = "clearInstalls";
+            this.clearInstalls.Size = new System.Drawing.Size(73, 17);
+            this.clearInstalls.Text = "Clear Installs";
+            this.clearInstalls.Click += new System.EventHandler(this.clearInstalls_Click);
             // 
             // MainFrm
             // 
@@ -269,5 +281,6 @@ namespace HabboLauncher
         private System.Windows.Forms.ToolStripStatusLabel lblVersionLink;
         private System.Windows.Forms.ToolStripStatusLabel tssOptions;
         private System.Windows.Forms.CheckBox chkUseCustomSwf;
+        private System.Windows.Forms.ToolStripStatusLabel clearInstalls;
     }
 }

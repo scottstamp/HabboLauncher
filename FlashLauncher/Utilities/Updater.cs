@@ -71,8 +71,26 @@ namespace HabboLauncher
 
                 return new UpdateResult(lastCheckData.FlashWindowsVersion != versionCache.LastCheck.Air.Version,
                     lastCheckData.UnityWindowsVersion != versionCache.LastCheck.Unity.Version, lastCheckDataHabbox.UnityWindowsVersion != versionCache.LastCheck.Habbox.Version, lastCheckDataShockwave.ShockwaveWindowsVersion != versionCache.LastCheck.Shockwave.Version);
+            } catch (WebException webEx) {
+                string errorDetails = $"Error checking for updates:\n\n";
+                
+                if (webEx.Response is HttpWebResponse response)
+                {
+                    errorDetails += $"URL: {response.ResponseUri}\n";
+                    errorDetails += $"Status: {(int)response.StatusCode} {response.StatusCode}\n\n";
+                }
+                else
+                {
+                    errorDetails += $"Network Error: {webEx.Message}\n\n";
+                }
+                
+                errorDetails += $"Details: {webEx.ToString()}";
+                
+                MessageBox.Show(errorDetails, "Update Check Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new UpdateResult(false, false, false, false, true);
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Unexpected error during update check:\n\n{ex.Message}\n\nStack Trace:\n{ex.StackTrace}", 
+                    "Update Check Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return new UpdateResult(false, false, false, false, true);
             }
         }
